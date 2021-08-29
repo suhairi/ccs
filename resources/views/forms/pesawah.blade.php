@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto md:px-12 lg:px-9">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white bg-blue-200 border-b border-gray-200 text-xl">
+                <div class="p-6 bg-white bg-blue-200 border-b border-gray-200 text-xl font-bold">
                    Maklumat Pesawah
                 </div>
                 <form method="POST" action="{{ route('postPesawah') }}" class="w-full max-w-sm">
@@ -30,7 +30,7 @@
                       </label>
                     </div>
                     <div class="md:w-7/12">
-                      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-200" name="nokp" value="{{ old('nokp') }}" type="text" required>
+                      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-200" name="nokp" value="{{ old('nokp') }}" type="text" required placeholder="Contoh: 991211025567">
                     </div>
                   </div>
                   <div class="md:flex md:items-center mb-2">
