@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,5 +31,7 @@ Route::get('pesawah', function() {
 Route::get('musim', function() {
     return view('forms.musim');
 })->middleware('auth')->name('musim');
+
+Route::post('pesawah', [PostController::class, 'store'])->name('postPesawah');
 
 
