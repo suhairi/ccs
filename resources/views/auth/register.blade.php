@@ -1,5 +1,11 @@
 <x-guest-layout>
-    <x-auth-card>
+        <x-slot name="header">
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                    Sistem CCS
+                </h2>
+            </x-slot>
+        <x-auth-card>
+
         <x-slot name="logo">
             <a href="/">
                 <x-application-logo class="w-20 h-20 fill-current text-gray-500" />

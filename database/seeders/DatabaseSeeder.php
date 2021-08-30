@@ -26,8 +26,14 @@ class DatabaseSeeder extends Seeder
             'password'  => bcrypt('password123')
         ]);
 
+        //Region - Wilayah
         for($i=1; $i<=4; $i++)
             Region::create(['nama' => 'Wilayah ' . $i . '']);
+
+        // Localities - lokaliti
+        $this->call([LocalitySeeder::class]);
+
+
 
     }
 }
