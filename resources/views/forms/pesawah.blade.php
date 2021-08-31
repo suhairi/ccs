@@ -15,7 +15,7 @@
                 @csrf
                   <div class="md:flex md:items-center mb-2 mt-2">
                     <div class="md:w-5/12">
-                      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+                      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
                         Nama Pesawah
                       </label>
                     </div>
@@ -25,7 +25,7 @@
                   </div>
                   <div class="md:flex md:items-center mb-2">
                     <div class="md:w-5/12">
-                      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-password">
+                      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
                         No KP
                       </label>
                     </div>
@@ -35,27 +35,39 @@
                   </div>
                   <div class="md:flex md:items-center mb-2">
                     <div class="md:w-5/12">
-                      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-password">
+                      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
                         Taraf Pendidikan
                       </label>
                     </div>
                     <div class="md:w-7/12">
-                      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-200" name="pendidikan" value="{{ old('pendidikan') }}" type="text" required>
+                      <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-200" name="pendidikan" value="{{ old('pendidikan') }}" required>
+                        <option>Pilih...</option>
+                        <option value="SPM">SPM</option>
+                        <option value="DIPLOMA">Diploma</option>
+                        <option value="IJAZAH">Ijazah</option>
+                        <option value="SARJANA">Sarjana</option>
+                        <option value="PHD">PHD</option>
+                        <option value="LAIN">Lain-lain</option>
+                      </select>
                     </div>
                   </div>
                   <div class="md:flex md:items-center mb-2">
                     <div class="md:w-5/12">
-                      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-password">
+                      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
                         Status Hak Milik Sawah
                       </label>
                     </div>
                     <div class="md:w-7/12">
-                      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-200" name="milikan" value="{{ old('milikan') }}" type="text" required>
+                      <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-200" name="milikan" value="{{ old('milikan') }}" required>
+                        <option>Pilih...</option>
+                        <option value="MILIK">Milik Sendiri</option>
+                        <option value="SEWA">Sewa</option>
+                      </select>
                     </div>
                   </div>
                   <div class="md:flex md:items-center mb-2">
                     <div class="md:w-5/12">
-                      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-password">
+                      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
                         No Tel
                       </label>
                     </div>
@@ -65,7 +77,7 @@
                   </div>
                   <div class="md:flex md:items-center mb-2">
                     <div class="md:w-5/12">
-                      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-password">
+                      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
                         Alamat Rumah
                       </label>
                     </div>
@@ -84,15 +96,18 @@
                   </div>
                 </form>
 
+                <div class="py-12 bg-gray-200">
+                  @if($errors->any())
+                    @foreach($errors->all() as $error)
+                      <div class="text-red-500 ml-4">{{ $error }}</div>
+                    @endforeach
+                  @endif
+                </div>
+
             </div>
+
         </div>
     </div>
 
-    <div class="py-12">
-      @if($errors)
-        @foreach($errors as $error)
-          <div>{{ $error }}</div>
-        @endforeach
-      @endif
-    </div>
+    
 </x-app-layout>

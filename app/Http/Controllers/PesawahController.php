@@ -3,9 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Farmer;
 
-class PostController extends Controller
+class PesawahController extends Controller
 {
+    public function index() {
+        return view('forms.pesawah');
+    }
+
     public function store(Request $request) {
 
         // dd(request()->all());
