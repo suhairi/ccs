@@ -40,6 +40,7 @@ Route::get('/musim', [SeasonController::class, 'index'])->middleware('auth')->na
 Route::post('/musim', [SeasonController::class, 'carian'])->middleware('auth')->name('carianPesawah');
 Route::get('/musim/hasil/carian', [SeasonController::class, 'hasil'])->middleware('auth')->name('hasilCarian');
 Route::get('/musim/{id}', [SeasonController::class, 'musim'], 'musim')->middleware('auth')->name('musim2');
+Route::post('/musim/store', [SeasonController::class, 'store'])->middleware('auth')->name('storeMusim');
 
 
 // Users

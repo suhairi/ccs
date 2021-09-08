@@ -46,4 +46,28 @@ class SeasonController extends Controller
                 ->with('regions', $regions)
                 ->with('localities', $localities);
     }
+
+    public function store(Request $request) {
+
+        // dd($request->all());
+
+        $attributes = $request->validate([
+                        'nama'      => 'required',
+                        'musim'     => 'required|numeric',
+                        'luasLot'   => 'required',
+                        'noLot'     => 'required',
+                        'luasUsaha' => 'required|numeric'
+                    ]);
+
+        // dd($request['pesawah_id']);
+        $farmer = Farmer::where('id', $request->pesawah_id)->first();
+
+        dd($farmer->nama);
+        // $request['pesawah_id'] = $farmer->nama;
+
+
+        // store here
+    }
+
+
 }
