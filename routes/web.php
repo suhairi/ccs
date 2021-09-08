@@ -37,6 +37,9 @@ Route::post('/pesawah', [FarmerController::class, 'store'])->middleware('auth')-
 
 // Musim
 Route::get('/musim', [SeasonController::class, 'index'])->middleware('auth')->name('musim');
+Route::post('/musim', [SeasonController::class, 'carian'])->middleware('auth')->name('carianPesawah');
+Route::get('/musim/hasil/carian', [SeasonController::class, 'hasil'])->middleware('auth')->name('hasilCarian');
+Route::get('/musim/{id}', [SeasonController::class, 'musim'], 'musim')->middleware('auth')->name('musim2');
 
 
 // Users

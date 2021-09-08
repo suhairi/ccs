@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 use App\Models\Farmer;
+use App\Models\Region;
+use App\Models\Locality;
 
 class SeasonController extends Controller
 {
@@ -12,8 +15,35 @@ class SeasonController extends Controller
 
         $pesawah = Farmer::all();
 
-        dd($pesawah);
+        // dd($pesawah);
 
-        return view('forms.carianPesawah', $pesawah);
+        // return view('forms.carianPesawah', $pesawah);
+        return view('forms.carianPesawah');
+    }
+
+    public function carian(Request $request) {
+
+        $farmers = Farmer::where('nama', 'LIKE', '%' . $request['namaPesawah'] . '%')->get();
+
+        // dd($farmers);
+
+        return view('forms.hasilCarian')->with('farmers', $farmers);
+    }
+
+    public function musim(Request $request, $id) {
+
+        Session::put('pesawah_id', $id);
+
+        $farmers = Farmer::all();
+        $farmer = $farmers->find($id);
+
+        $regions = Region::all();
+
+        $localities = Locality::all();
+
+        return view('forms.musim')
+                ->with('farmer', $farmer)
+                ->with('regions', $regions)
+                ->with('localities', $localities);
     }
 }
