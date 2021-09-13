@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Session;
 use App\Models\Farmer;
 use App\Models\Region;
 use App\Models\Locality;
+use App\Models\Season;
 
 class SeasonController extends Controller
 {
@@ -59,14 +60,24 @@ class SeasonController extends Controller
                         'luasUsaha' => 'required|numeric'
                     ]);
 
-        // dd($request['pesawah_id']);
-        $farmer = Farmer::where('id', $request->pesawah_id)->first();
 
-        dd($farmer->nama);
+        $region = Locality::where('id', $request->locality_id)->first();
+        $request['region_id']   = $region->region_id;
+
+
+        // dd($request->all());
         // $request['pesawah_id'] = $farmer->nama;
 
 
         // store here
+        if(Season::create($request->all())) {
+
+            Session::flash('success', 'Berjaya');
+            return view('forms.carianPesawah');
+        } else {
+            return redirect('form.carianPesawah')->withInput($request->all());
+        }
+
     }
 
 
