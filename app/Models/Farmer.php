@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\Education;
+
 class Farmer extends Model
 {
     use HasFactory;
@@ -12,7 +14,12 @@ class Farmer extends Model
     protected $primaryKey = 'id';
 
     public $timestamps = false;    
-    protected $fillable = ["nama", "nokp", "jantina", "umur", "pendidikan", "milikan", "notel", "alamat"];
+    protected $fillable = ["nama", "nokp", "jantina", "umur", "education_id", "milikan", "notel", "alamat"];
+
+
+    public function education() {
+        $this->belongsTo(Education::class);
+    }
 
 
 }

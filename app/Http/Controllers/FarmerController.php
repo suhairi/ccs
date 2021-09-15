@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 
 use App\Models\Farmer;
+use App\Models\Education;
 
 
 
@@ -13,6 +14,10 @@ class FarmerController extends Controller
 {
 
     public function index() {
+
+        $educations = Education::all();
+
+        dd($educations);
 
         return view('forms.pesawah');
     }
@@ -23,12 +28,12 @@ class FarmerController extends Controller
         // dd(request()->all());
 
         $attributes = $request->validate([
-            'nama'      => 'required|min:5',
-            'nokp'      => 'required|numeric|unique:farmers',
-            'pendidikan'=> 'required',
-            'notel'     => 'required|numeric',
-            'milikan'   => 'required',
-            'alamat'    => 'required|min:10'
+            'nama'          => 'required|min:5',
+            'nokp'          => 'required|numeric|unique:farmers',
+            'education_id'  => 'required',
+            'notel'         => 'required|numeric',
+            'milikan'       => 'required',
+            'alamat'        => 'required|min:10'
         ]);
 
         // Auto : jantina, umur

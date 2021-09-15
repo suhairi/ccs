@@ -12,6 +12,8 @@ class SenaraiController extends Controller
 
         $farmers = Farmer::all();
 
+        dd($farmers->education()->education_id);
+
         return view('lists.pesawah')->with('farmers', $farmers);
     }
 }

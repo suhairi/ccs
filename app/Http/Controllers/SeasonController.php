@@ -16,9 +16,6 @@ class SeasonController extends Controller
 
         $pesawah = Farmer::all();
 
-        // dd($pesawah);
-
-        // return view('forms.carianPesawah', $pesawah);
         return view('forms.carianPesawah');
     }
 
@@ -63,11 +60,6 @@ class SeasonController extends Controller
 
         $region = Locality::where('id', $request->locality_id)->first();
         $request['region_id']   = $region->region_id;
-
-
-        // dd($request->all());
-        // $request['pesawah_id'] = $farmer->nama;
-
 
         // store here
         if(Season::create($request->all())) {

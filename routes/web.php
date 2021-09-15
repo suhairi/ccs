@@ -30,24 +30,33 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-//Pesawah
-Route::get('/pesawah', [FarmerController::class, 'index'])->middleware('auth')->name('pesawah');
-Route::post('/pesawah', [FarmerController::class, 'store'])->middleware('auth')->name('postPesawah');
+
+Route::middleware('auth')->group(function () {
+
+    //Pesawah
+    Route::get('/pesawah', [FarmerController::class, 'index'])->name('pesawah');
+    Route::post('/pesawah', [FarmerController::class, 'store'])->name('postPesawah');
+
+    // Musim
+    Route::get('/musim', [SeasonController::class, 'index'])->name('musim');
+    Route::post('/musim', [SeasonController::class, 'carian'])->name('carianPesawah');
+    Route::get('/musim/hasil/carian', [SeasonController::class, 'hasil'])->name('hasilCarian');
+    Route::get('/musim/{id}', [SeasonController::class, 'musim'], 'musim')->name('musim2');
+    Route::post('/musim/store', [SeasonController::class, 'store'])->name('storeMusim');
 
 
-// Musim
-Route::get('/musim', [SeasonController::class, 'index'])->middleware('auth')->name('musim');
-Route::post('/musim', [SeasonController::class, 'carian'])->middleware('auth')->name('carianPesawah');
-Route::get('/musim/hasil/carian', [SeasonController::class, 'hasil'])->middleware('auth')->name('hasilCarian');
-Route::get('/musim/{id}', [SeasonController::class, 'musim'], 'musim')->middleware('auth')->name('musim2');
-Route::post('/musim/store', [SeasonController::class, 'store'])->middleware('auth')->name('storeMusim');
+    // Users
+    Route::get('/users', [UserController::class, 'index'])->name('users');
 
 
-// Users
-Route::get('/users', [UserController::class, 'index'])->middleware('auth')->name('users');
+    // Senarai 
+    Route::get('/senarai/pesawah', [SenaraiController::class, 'index'])->name('senaraiPesawah');
+
+});
 
 
-// Senarai 
-Route::get('/senarai/pesawah', [SenaraiController::class, 'index'])->middleware('auth')->name('senaraiPesawah');
+
+
+
 
 

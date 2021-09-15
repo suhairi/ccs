@@ -3,10 +3,12 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
 use App\Models\Farmer;
 use App\Models\User;
 use App\Models\Region;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Education;
 
 class DatabaseSeeder extends Seeder
 {
@@ -32,6 +34,11 @@ class DatabaseSeeder extends Seeder
 
         // Localities - lokaliti
         $this->call([LocalitySeeder::class]);
+
+        // Education
+        $this->call([EducationSeeder::class]);
+
+        
 
 
 

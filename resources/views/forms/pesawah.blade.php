@@ -49,15 +49,12 @@
                       </label>
                     </div>
                     <div class="md:w-7/12">
-                      <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-200" name="pendidikan" value="{{ old('pendidikan') }}" required>
+                      <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-200" id="inline-password" name="pendidikan_id">
                         <option value="">Pilih...</option>
-                        <option value="SPM">SPM</option>
-                        <option value="DIPLOMA">Diploma</option>
-                        <option value="IJAZAH">Ijazah</option>
-                        <option value="SARJANA">Sarjana</option>
-                        <option value="PHD">PHD</option>
-                        <option value="LAIN">Lain-lain</option>
-                      </select>
+                        @foreach($educations as $education)
+                          <option  class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-200" value="{{ $education['id'] }}">{{ $education['nama'] }}</option>
+                        @endforeach
+                      </select>                      
                     </div>
                   </div>
                   <div class="md:flex md:items-center mb-2">

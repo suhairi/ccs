@@ -39,7 +39,7 @@
                           <td>{{ $farmer->nokp }}</td>
                           <td class="text-center">{{ substr($farmer->jantina, 0, 1) }}</td>
                           <td class="text-center">{{ $farmer->umur }}</td>
-                          <td>{{ $farmer->pendidikan }}</td>
+                          <td>{{ $farmer->pendidikan()->nama }}</td>
                           <td>{{ $farmer->milikan }}</td>
                           <td>{{ $farmer->notel }}</td>
                           <td>{{ $farmer->alamat }}</td>

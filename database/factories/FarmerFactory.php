@@ -82,14 +82,14 @@ class FarmerFactory extends Factory
                 ];
 
         return [
-            'nama'      => $this->faker->randomElement($nama),
-            'nokp'      => $this->faker->numerify('############'),
-            'jantina'   => $this->faker->randomElement(['LELAKI', 'PEREMPUAN']),
-            'umur'      => $this->faker->numberBetween(25,70),
-            'pendidikan'=> $this->faker->randomElement(['PMR', 'SPM', 'IJAZAH', 'DIPLOMA', 'SARJANA', 'PHD', 'LAIN-LAIN']),
-            'milikan'   => $this->faker->randomElement(['SENDIRI', 'SEWA']),
-            'notel'     => $this->faker->randomElement($phone),
-            'alamat'    => $this->faker->randomElement($alamat),
+            'nama'          => $this->faker->unique()->randomElement($nama),
+            'nokp'          => $this->faker->numerify('############'),
+            'jantina'       => $this->faker->randomElement(['LELAKI', 'PEREMPUAN']),
+            'umur'          => $this->faker->numberBetween(25,70),
+            'education_id'  => $this->faker->randomElement(['1', '2', '3', '4', '5', '6', '7', '8', '9']),
+            'milikan'       => $this->faker->randomElement(['SENDIRI', 'SEWA']),
+            'notel'         => $this->faker->unique()->randomElement($phone),
+            'alamat'        => $this->faker->unique()->randomElement($alamat),
         ];
     }
 }
