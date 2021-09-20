@@ -101,10 +101,9 @@
                             </x-slot>
 
                             <x-slot name="content">
-                                <x-dropdown-link :href="route('users')">Users</x-dropdown-link>
-                                <x-dropdown-link :href="route('dashboard')">Educations..</x-dropdown-link>
-                                <x-dropdown-link :href="route('dashboard')">Seasons..</x-dropdown-link>
-                                <x-dropdown-link :href="route('dashboard')">Localities..</x-dropdown-link>
+                                <x-dropdown-link :href="route('settings.users')">Users</x-dropdown-link>
+                                <x-dropdown-link :href="route('settings.educations')">Educations</x-dropdown-link>
+                                <x-dropdown-link :href="route('settings.localitites')">Localitites</x-dropdown-link>
                                 <x-dropdown-link :href="route('dashboard')">Region..</x-dropdown-link>
                             </x-slot>
                         </x-dropdown>

@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\FarmerController;
 use App\Http\Controllers\SeasonController;
 use App\Http\Controllers\SenaraiController;
+use App\Http\Controllers\SettingController;
 
 use App\Models\User;
 
@@ -45,14 +46,28 @@ Route::middleware('auth')->group(function () {
     Route::post('/musim/store', [SeasonController::class, 'store'])->name('storeMusim');
 
 
-    // Users
-    Route::get('/users', [UserController::class, 'index'])->name('users');
+    // Settings
+    Route::group(['namespace' => 'settings'], function() {
+
+        Route::get('/users', [SettingController::class, 'index'])->name('settings.users');
+        Route::get('/users/{id}', [SettingController::class, 'destroy'])->name('settings.delUser');
+
+        Route::get('/educations', [SettingController::class, 'education'])->name('settings.educations');
+        Route::get('/educations/{id}', [SettingController::class, 'destroyEdu'])->name('settings.delEdu');
+
+        Route::get('/localitites', [SettingController::class, 'locality'])->name('settings.localitites');
+        Route::get('/localitites/{id}', [SettingController::class, 'destroyLocality'])->name('settings.delLocality');
+
+        
+
+    });
+
 
 
     // Senarai 
     Route::get('/senarai/pesawah', [SenaraiController::class, 'index'])->name('senaraiPesawah');
 
-});
+}); // end group middleware('auth')
 
 
 
