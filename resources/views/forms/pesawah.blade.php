@@ -49,10 +49,10 @@
                       </label>
                     </div>
                     <div class="md:w-7/12">
-                      <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-200" id="inline-password" name="pendidikan_id">
+                      <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-200" id="inline-password" name="education_id">
                         <option value="">Pilih...</option>
-                        @foreach($educations as $education)
-                          <option  class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-200" value="{{ $education['id'] }}">{{ $education['nama'] }}</option>
+                        @foreach($educations as $key => $education)
+                          <option  class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-200" value="{{ $key }}">{{ $education }}</option>
                         @endforeach
                       </select>                      
                     </div>
@@ -68,6 +68,7 @@
                         <option value="">Pilih...</option>
                         <option value="MILIK">Milik Sendiri</option>
                         <option value="SEWA">Sewa</option>
+                        <option value="BSTS">BSTS</option>
                       </select>
                     </div>
                   </div>

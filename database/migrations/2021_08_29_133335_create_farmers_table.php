@@ -19,7 +19,7 @@ class CreateFarmersTable extends Migration
             $table->string('nokp');
             $table->string('jantina');
             $table->string('umur');
-            $table->string('education_id');
+            $table->foreignId('education_id');
             $table->string('milikan');
             $table->string('notel');
             $table->text('alamat');

@@ -16,10 +16,10 @@ class CreateSeasonsTable extends Migration
         Schema::create('seasons', function (Blueprint $table) {
             $table->id();
             $table->string('musim');
-            $table->integer('pesawah_id');
-            $table->integer('region_id');
+            $table->foreignId('pesawah_id');
+            $table->foreignId('region_id');
             $table->string('fasa');
-            $table->integer('locality_id');
+            $table->foreignId('locality_id');
             $table->integer('nolot');
             $table->float('luaslot', 8, 2);
             $table->float('luasusaha', 8, 2);

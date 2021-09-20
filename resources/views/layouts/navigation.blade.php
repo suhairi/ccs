@@ -33,7 +33,7 @@
 
                         <x-slot name="content">
                             <x-dropdown-link :href="route('pesawah')">Pesawah</x-dropdown-link>
-                            <x-dropdown-link :href="route('musim')">Musim</x-dropdown-link>
+                            <x-dropdown-link :href="route('musim')">Survey</x-dropdown-link>
                         </x-slot>
                     </x-dropdown>
                 </div>
@@ -102,7 +102,10 @@
 
                             <x-slot name="content">
                                 <x-dropdown-link :href="route('users')">Users</x-dropdown-link>
-                                <x-dropdown-link :href="route('dashboard')">Setting 2..</x-dropdown-link>
+                                <x-dropdown-link :href="route('dashboard')">Educations..</x-dropdown-link>
+                                <x-dropdown-link :href="route('dashboard')">Seasons..</x-dropdown-link>
+                                <x-dropdown-link :href="route('dashboard')">Localities..</x-dropdown-link>
+                                <x-dropdown-link :href="route('dashboard')">Region..</x-dropdown-link>
                             </x-slot>
                         </x-dropdown>
                     </div>

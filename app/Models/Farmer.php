@@ -18,7 +18,7 @@ class Farmer extends Model
 
 
     public function education() {
-        $this->belongsTo(Education::class);
+        return $this->belongsTo(Education::class);
     }
 
 

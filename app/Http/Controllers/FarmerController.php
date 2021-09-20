@@ -15,11 +15,9 @@ class FarmerController extends Controller
 
     public function index() {
 
-        $educations = Education::all();
+        $educations = Education::pluck('nama', 'id');
 
-        dd($educations);
-
-        return view('forms.pesawah');
+        return view('forms.pesawah')->with('educations', $educations);
     }
 
 
@@ -49,9 +47,9 @@ class FarmerController extends Controller
         if(Farmer::create($request->all())) {
 
             Session::flash('success', 'Berjaya');
-            return view('forms.pesawah');
+            return redirect('pesawah');
         } else {
-            return redirect('form.pesawah')->withInput($request->all());
+            return redirect('pesawah')->withInput($request->all());
         }
 
         
