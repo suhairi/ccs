@@ -50,13 +50,16 @@ Route::middleware('auth')->group(function () {
     Route::group(['namespace' => 'settings'], function() {
 
         Route::get('/users', [SettingController::class, 'index'])->name('settings.users');
-        Route::get('/users/{id}', [SettingController::class, 'destroy'])->name('settings.delUser');
+        Route::get('/users/{id}', [SettingController::class, 'destroy'])->name('settings.user.delete');
+        Route::get('/users/update/{id}', [SettingController::class, 'userUpdateForm'])->name('settings.user.update.form');
+        Route::post('/users/update', [SettingController::class, 'userUpdate'])->name('settings.user.update');
 
         Route::get('/educations', [SettingController::class, 'education'])->name('settings.educations');
-        Route::get('/educations/{id}', [SettingController::class, 'destroyEdu'])->name('settings.delEdu');
+        Route::get('/educations/{id}', [SettingController::class, 'destroyEdu'])->name('settings.education.delete');
+        Route::get('/education/update/{id}', [SettingController::class, 'educationUpdateForm'])->name('settings.education.update.form');
+        Route::post('/education/update', [SettingController::class, 'educationUpdate'])->name('settings.education.update');
 
         Route::get('/localitites', [SettingController::class, 'locality'])->name('settings.localitites');
-        Route::get('/localitites/{id}', [SettingController::class, 'destroyLocality'])->name('settings.delLocality');
 
         
 

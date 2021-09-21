@@ -52,7 +52,7 @@
                 <tr>
                   <td class="text-center">{{ $loop->iteration }}</td>
                   <td>{{ $education->nama }}</td>
-                  <td>[ <a href="#" class="text-blue-500">Modify</a> ] [ <a href="{{ route('settings.delEdu', $education->id) }}" class="text-blue-500">Delete</a> ]</td>
+                  <td>[ <a href="{{ route('settings.education.update.form', $education->id) }}" class="text-blue-500">Modify</a> ] [ <a href="{{ route('settings.education.delete', $education->id) }}" class="text-blue-500">Delete</a> ]</td>
                 </tr>
               @endforeach
             </tbody>

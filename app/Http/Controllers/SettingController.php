@@ -89,6 +89,65 @@ class SettingController extends Controller
         }
     }
 
+    public function userUpdateForm(Request $request) {
+
+        $user = User::where('id', $request->id)->first();
+
+        return view('settings.user')->with('user', $user);
+
+    }
+
+    public function userUpdate(Request $request) {
+
+        // dd($request->all());
+
+        $user = $request->validate([
+                    'name'      => 'required',
+                    'email'     => 'required|email',
+                    'password'  => 'required|min:7'
+                ]);
+
+        $user = User::where('id', $request->id)->first();
+
+        $user->password = bcrypt($request->password);
+
+        if($user->save()) {
+
+            Session::flash('success', 'Berjaya');
+            return redirect()->route('settings.users');
+
+        } else {
+
+            return redirect()->route('settings.user.update')->withInput($request->all());
+        }
+    }
+
+    public function educationUpdateForm(Request $request) {
+
+        $education = Education::where('id', $request->id)->first();
+
+        return view('settings.educationUpdate')->with('education', $education);
+    }
+
+    public function educationUpdate(Request $request) {
+
+        $education = $request->validate([
+                        'nama'  => 'required'
+                    ]);
+
+        $education = Education::where('id', $request->id)->first();
+        $education->nama = $request->nama;
+
+        if($education->save()) {
+
+            Session::flash('success', 'Berjaya');
+            return redirect()->route('settings.educations');
+        } else {
+
+            return redirect()->route('settings.education.update');
+        }
+    }
+
     
 
 

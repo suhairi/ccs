@@ -54,7 +54,7 @@
                   <td class="text-center">{{ $loop->iteration }}</td>
                   <td>{{ $user->name }}</td>
                   <td>{{ $user->email }}</td>
-                  <td>[ <a href="#" class="text-blue-500">Modify</a> ] [ <a href="{{ route('settings.delUser', $user->id) }}" class="text-blue-500">Delete</a> ]</td>
+                  <td>[ <a href="{{ route('settings.user.update.form', $user->id) }}" class="text-blue-500">Modify</a> ] [ <a href="{{ route('settings.user.delete', $user->id) }}" class="text-blue-500">Delete</a> ]</td>
                 </tr>
               @endforeach
             </tbody>
