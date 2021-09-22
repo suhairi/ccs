@@ -119,7 +119,7 @@
                     <div class="md:w-5/12"></div>
                     <div class="md:w-7/12">
                       <button class="shadow bg-blue-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
-                        Hantar
+                        Seterusnya >>
                       </button>
                     </div>
                   </div>
