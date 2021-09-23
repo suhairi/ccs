@@ -45,6 +45,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/musim/{id}', [SeasonController::class, 'musim'], 'musim')->name('musim2');
     Route::post('/musim/store', [SeasonController::class, 'store'])->name('storeMusim');
 
+    // Asas Tanaman
+    Route::get('/tanaman', [SeasonController::class, 'tanaman'])->name('tanaman');
+    Route::post('/tanaman', [SeasonController::class, 'storeTanaman'])->name('storeTanaman');
+
 
     // Settings
     Route::group(['namespace' => 'settings'], function() {

@@ -38,6 +38,16 @@ class DatabaseSeeder extends Seeder
         // Education
         $this->call([EducationSeeder::class]);
 
+        // Variety
+        $this->call([VarietySeeder::class]);
+
+        // Method
+        $this->call([MethodSeeder::class]);
+
+        
+
+        
+
         
 
 

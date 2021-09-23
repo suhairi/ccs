@@ -17,7 +17,7 @@ class CreateCropsTable extends Migration
             $table->id();
             $table->integer('pesawah_id');
             $table->foreignId('season_id');
-            $table->string('varieti');
+            $table->string('variety_id');
             $table->string('kaedah');
             $table->date('tarikhTanam');
             $table->date('tarikhJangkaTuai');

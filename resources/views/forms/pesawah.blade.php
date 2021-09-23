@@ -102,15 +102,14 @@
                     </div>
                   </div>
                 </form>
-
                 
-                  @if($errors->any())
-                    <div class="py-12 bg-gray-200">
-                      @foreach($errors->all() as $error)
-                        <div class="text-red-500 ml-4">{{ $error }}</div>
-                      @endforeach
-                    </div>
-                  @endif
+                @if($errors->any())
+                  <div class="py-12 bg-gray-200">
+                    @foreach($errors->all() as $error)
+                      <div class="text-red-500 ml-4">{{ $error }}</div>
+                    @endforeach
+                  </div>
+                @endif
                 
             </div>
 
