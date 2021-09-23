@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
+use Carbon\Carbon;
+
 use App\Models\Farmer;
 use App\Models\Region;
 use App\Models\Locality;
@@ -104,14 +106,18 @@ class SeasonController extends Controller
                     'nama'          => 'required',
                     'variety_id'    => 'required|numeric',
                     'method_id'     => 'required|numeric',
-                    'tarikh_tanam'  => 'required|date',
+                    'tarikhTanam'  => 'required|date',
                     'tuaiSebenar'   => 'required|date'
 
                 ]);
 
-        dd('success');
-
         // tarikh dijangka tuai -> auto generate + 110 hari
+        $tarikhTanam = Carbon::createFromFormat('Y-m-d', $request->tarikhTanam);
+        $tarikhTanam = $tarikhTanam->addDays(110);
+
+        dd($tarikhTanam);
+
+        
     }
 
 
