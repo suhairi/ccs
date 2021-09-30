@@ -81,7 +81,7 @@ class SeasonController extends Controller
             Session::flash('success', 'Berjaya');
             return redirect()->route('tanaman');
         } else {
-            return redirect('form.carianPesawah')->withInput($request->all());
+            return redirect('forms.carianPesawah')->withInput($request->all());
         }
 
     }
@@ -130,9 +130,9 @@ class SeasonController extends Controller
         if(Crop::create($request->all())) {
 
             Session::flash('success', 'Berjaya');
-            return redirect()->route('pesawah');
+            return redirect()->route('musim');
         } else {
-            return redirect('form.carianPesawah')->withInput($request->all());
+            return redirect('forms.musim')->withInput($request->all());
         }
 
 
