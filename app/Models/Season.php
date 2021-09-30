@@ -15,7 +15,7 @@ class Season extends Model
     protected $primaryKey = 'id';
 
     public $timestamps = false;
-    protected $fillable = ['musim', 'pesawah_id', 'region_id', 'fasa', 'locality_id', 'noLot', 'luasLot', 'luasUsaha', 'koordinat'];
+    protected $fillable = ['musim', 'season_id', 'pesawah_id', 'region_id', 'phase', 'locality_id', 'noLot', 'luasLot', 'luasUsaha', 'koordinat'];
 
 
 

@@ -13,6 +13,7 @@ use App\Models\Locality;
 use App\Models\Season;
 use App\Models\Variety;
 use App\Models\Method;
+use App\Models\Crop;
 
 
 class SeasonController extends Controller
@@ -56,8 +57,8 @@ class SeasonController extends Controller
 
         $attributes = $request->validate([
                         'nama'          => 'required',
-                        'musim'         => 'required|numeric',
-                        'fasa'          => 'required|numeric',
+                        'season_id'     => 'required|numeric',
+                        'phase'         => 'required|numeric',
                         'locality_id'   => 'required|numeric',
                         'luasLot'       => 'required',
                         'noLot'         => 'required',
@@ -68,11 +69,13 @@ class SeasonController extends Controller
         $region = Locality::where('id', $request->locality_id)->first();
         $request['region_id']   = $region->region_id;
 
+        // dd($request->all());
+
         // store here
         if(Season::create($request->all())) {
 
-            Session::put('musim', $request['musim']);
-            Session::put('fasa', $request['fasa']);
+            Session::put('phase', $request['phase']);
+            Session::put('season_id', $request['season_id']);
             Session::put('locality_id', $request['locality_id']);
 
             Session::flash('success', 'Berjaya');
@@ -84,8 +87,6 @@ class SeasonController extends Controller
     }
 
     public function tanaman() {
-
-        // dd(Session::all());
 
         $varieties  = Variety::all();
         $methods    = Method::all();
@@ -103,19 +104,38 @@ class SeasonController extends Controller
         // dd($request->all());
 
         $tanaman = $request->validate([
-                    'nama'          => 'required',
-                    'variety_id'    => 'required|numeric',
-                    'method_id'     => 'required|numeric',
-                    'tarikhTanam'  => 'required|date',
-                    'tuaiSebenar'   => 'required|date'
+                    'nama'              => 'required',
+                    'variety_id'        => 'required|numeric',
+                    'method_id'         => 'required|numeric',
+                    'tarikhTanam'       => 'required|date',
+                    'tarikhTuaiSebenar' => 'required|date'
 
                 ]);
 
         // tarikh dijangka tuai -> auto generate + 110 hari
-        $tarikhTanam = Carbon::createFromFormat('Y-m-d', $request->tarikhTanam);
-        $tarikhTanam = $tarikhTanam->addDays(110);
+        $tarikhJangkaTuai = Carbon::createFromFormat('Y-m-d', $request->tarikhTanam);
+        $tarikhJangkaTuai = $tarikhJangkaTuai->addDays(110);
 
-        dd($tarikhTanam);
+        // dd(Session::all());
+
+
+        $request['tarikhJangkaTuai'] = $tarikhJangkaTuai;
+        $request['pesawah_id'] = Session::get('pesawah_id');
+        $request['phase'] = Session::get('phase');
+        $request['season_id'] = Session::get('season_id');
+        $request['locality_id'] = Session::get('locality_id');
+
+        // dd($request->all());
+
+        if(Crop::create($request->all())) {
+
+            Session::flash('success', 'Berjaya');
+            return redirect()->route('pesawah');
+        } else {
+            return redirect('form.carianPesawah')->withInput($request->all());
+        }
+
+
 
         
     }
