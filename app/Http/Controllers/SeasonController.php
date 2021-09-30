@@ -69,14 +69,28 @@ class SeasonController extends Controller
         $region = Locality::where('id', $request->locality_id)->first();
         $request['region_id']   = $region->region_id;
 
-        // dd($request->all());
+        Session::put('phase', $request['phase']);
+        Session::put('season_id', $request['season_id']);
+        Session::put('locality_id', $request['locality_id']);   
+
+        // Check wether the farmer's SEASON has been recorded.
+
+        $farmer = Season::where('pesawah_id', $request['pesawah_id'])
+                        ->where('season_id', $request['season_id'])
+                        ->where('phase', $request['phase'])
+                        ->where('locality_id', $request['locality_id'])
+                        ->first();
+
+        if($farmer) {
+
+            Session::flash('success', 'Data telah wujud.');
+
+            // redirect to CROP
+            return redirect()->route('tanaman');
+        }
 
         // store here
         if(Season::create($request->all())) {
-
-            Session::put('phase', $request['phase']);
-            Session::put('season_id', $request['season_id']);
-            Session::put('locality_id', $request['locality_id']);
 
             Session::flash('success', 'Berjaya');
             return redirect()->route('tanaman');
@@ -101,15 +115,12 @@ class SeasonController extends Controller
 
     public function storeTanaman(Request $request) {
 
-        // dd($request->all());
-
         $tanaman = $request->validate([
                     'nama'              => 'required',
                     'variety_id'        => 'required|numeric',
                     'method_id'         => 'required|numeric',
                     'tarikhTanam'       => 'required|date',
                     'tarikhTuaiSebenar' => 'required|date'
-
                 ]);
 
         // tarikh dijangka tuai -> auto generate + 110 hari
@@ -118,14 +129,19 @@ class SeasonController extends Controller
 
         // dd(Session::all());
 
-
         $request['tarikhJangkaTuai'] = $tarikhJangkaTuai;
         $request['pesawah_id'] = Session::get('pesawah_id');
-        $request['phase'] = Session::get('phase');
         $request['season_id'] = Session::get('season_id');
         $request['locality_id'] = Session::get('locality_id');
 
-        // dd($request->all());
+        // Check wether the farmer's CROP has been recorded.
+
+        $farmer = Crop::where('pesawah_id', $request['pesawah_id'])
+                        ->where('season_id', $request['season_id'])
+                        ->where('phase', $request['phase'])
+                        ->first();
+
+        dd($farmer);
 
         if(Crop::create($request->all())) {
 

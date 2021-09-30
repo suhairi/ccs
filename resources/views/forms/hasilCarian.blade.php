@@ -32,9 +32,10 @@
                     </thead>
                     <tbody>
 
-                        @empty($farmers)
-                            <tr><td colspan="9">No Data.</td></tr>
-                        @endempty
+                        @if(count($farmers) <= 0)
+                            <tr><td colspan="9">No Data. </td></tr>
+                            <tr><td colspan="9"><a href="{{ url()->previous() }}" class="text-blue-500"><< Kembali </a></td></tr>
+                        @endif
 
                         @isset($farmers)
                             @foreach($farmers as $farmer)

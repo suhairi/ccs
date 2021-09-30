@@ -12,7 +12,7 @@ class Crop extends Model
     public $timestamps = false;
 
     protected $primaryKey   = 'id';
-    protected $fillable     = ['pesawah_id', 'season_id', 'variety_id', 'phase', 'method_id', 'tarikhTanam', 'tarikhJangkaTuai', 'tarikhTuaiSebenar'];
+    protected $fillable     = ['pesawah_id', 'season_id', 'variety_id', 'method_id', 'tarikhTanam', 'tarikhJangkaTuai', 'tarikhTuaiSebenar'];
 
     public function pesawah() {
         return $this->belongsTo('Pesawah::class');
