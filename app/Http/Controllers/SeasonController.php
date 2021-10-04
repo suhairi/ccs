@@ -106,7 +106,7 @@ class SeasonController extends Controller
                     'nama'          => 'required',
                     'variety_id'    => 'required|numeric',
                     'method_id'     => 'required|numeric',
-                    'tarikhTanam'  => 'required|date',
+                    'tarikhTanam'   => 'required|date',
                     'tuaiSebenar'   => 'required|date'
 
                 ]);
@@ -116,6 +116,9 @@ class SeasonController extends Controller
         $tarikhTanam = $tarikhTanam->addDays(110);
 
         dd($tarikhTanam);
+
+        // Create CROPS
+        
 
         
     }

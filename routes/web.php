@@ -66,10 +66,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/localitites', [SettingController::class, 'locality'])->name('settings.localitites');
 
         
-
     });
-
-
 
     // Senarai 
     Route::get('/senarai/pesawah', [SenaraiController::class, 'index'])->name('senaraiPesawah');
