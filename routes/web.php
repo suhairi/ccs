@@ -7,6 +7,7 @@ use App\Http\Controllers\FarmerController;
 use App\Http\Controllers\SeasonController;
 use App\Http\Controllers\SenaraiController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\FertilizerController;
 
 use App\Models\User;
 
@@ -48,6 +49,9 @@ Route::middleware('auth')->group(function () {
     // Asas Tanaman
     Route::get('/tanaman', [SeasonController::class, 'tanaman'])->name('tanaman');
     Route::post('/tanaman', [SeasonController::class, 'storeTanaman'])->name('storeTanaman');
+
+    // Pembajaan
+    Route::get('/pembajaan', [SeasonController::class, 'pembajaan'])->name('pembajaan');
 
 
     // Settings

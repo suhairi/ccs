@@ -44,12 +44,8 @@ class DatabaseSeeder extends Seeder
         // Method
         $this->call([MethodSeeder::class]);
 
-        
-
-        
-
-        
-
+        // Fertilizer
+        $this->call([FertilizerSeeder::class]);
 
 
     }

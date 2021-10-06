@@ -116,21 +116,17 @@ class SeasonController extends Controller
     public function storeTanaman(Request $request) {
 
         $tanaman = $request->validate([
-<<<<<<< HEAD
                     'nama'              => 'required',
                     'variety_id'        => 'required|numeric',
+                    'tarikhTanam'       => 'required|date',
+                    'tarikhTuaiSebenar' => 'required|date',
+                    'nama'              => 'required',
                     'method_id'         => 'required|numeric',
                     'tarikhTanam'       => 'required|date',
                     'tarikhTuaiSebenar' => 'required|date'
-=======
-                    'nama'          => 'required',
-                    'variety_id'    => 'required|numeric',
-                    'method_id'     => 'required|numeric',
-                    'tarikhTanam'   => 'required|date',
-                    'tuaiSebenar'   => 'required|date'
 
->>>>>>> 428b422036c3fb61e6695ee5f89112ac3fdc303e
                 ]);
+
 
         // tarikh dijangka tuai -> auto generate + 110 hari
         $tarikhJangkaTuai = Carbon::createFromFormat('Y-m-d', $request->tarikhTanam);
@@ -147,25 +143,32 @@ class SeasonController extends Controller
 
         $farmer = Crop::where('pesawah_id', $request['pesawah_id'])
                         ->where('season_id', $request['season_id'])
-                        ->where('phase', $request['phase'])
                         ->first();
 
-        dd($farmer);
+        if($farmer == null) {
 
-        if(Crop::create($request->all())) {
+            if(Crop::create($request->all())) {
 
-            Session::flash('success', 'Berjaya');
-            return redirect()->route('musim');
+                Session::flash('success', 'Berjaya');
+                return redirect()->route('pembajaan');
+            } else {
+                return redirect('forms.musim')->withInput($request->all());
+            }
         } else {
-            return redirect('forms.musim')->withInput($request->all());
+
+            Session::flash('fail', 'Sudah direkod sebelum ini.');
+            return redirect()->route('pembajaan');
         }
 
+       
+    }
 
+    public function pembajaan() {
 
-        // Create CROPS
-        
+        $farmer = Farmer::where('id', Session::get('pesawah_id'))->first();
 
-        
+        return view('forms.fertilizer')
+                ->with('farmer', $farmer);
     }
 
 
