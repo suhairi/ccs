@@ -116,11 +116,20 @@ class SeasonController extends Controller
     public function storeTanaman(Request $request) {
 
         $tanaman = $request->validate([
+<<<<<<< HEAD
                     'nama'              => 'required',
                     'variety_id'        => 'required|numeric',
                     'method_id'         => 'required|numeric',
                     'tarikhTanam'       => 'required|date',
                     'tarikhTuaiSebenar' => 'required|date'
+=======
+                    'nama'          => 'required',
+                    'variety_id'    => 'required|numeric',
+                    'method_id'     => 'required|numeric',
+                    'tarikhTanam'   => 'required|date',
+                    'tuaiSebenar'   => 'required|date'
+
+>>>>>>> 428b422036c3fb61e6695ee5f89112ac3fdc303e
                 ]);
 
         // tarikh dijangka tuai -> auto generate + 110 hari
@@ -152,6 +161,9 @@ class SeasonController extends Controller
         }
 
 
+
+        // Create CROPS
+        
 
         
     }
