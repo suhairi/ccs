@@ -30,6 +30,10 @@
                 <div class="p-6 bg-blue-200 border-b border-gray-200 text-xl">
                    Maklumat Pembajaan
                 </div>
+              </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto sm:px-12 lg:px-8">
 
                 <form class="w-full max-w-sm" method="POST" action="{{ route('storeTanaman') }}">
                 @csrf
@@ -47,10 +51,10 @@
                     </div>
                   </div>
 
-                  <div class="md:flex md:items-center mb-2 mt-1">
-                    <div class="md:w-5/12">
-                      <div class="md:w-7/12">
-                        <table class="table-fixed border-2 rounded">
+                  <div class="max-w-7xl mx-auto md:px-12 lg:px-9">
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                        <div class="p-6 bg-white border-b border-gray-200 text-sm font-bold">
+                          <table class="w-full tr-even:bg-grey-light"></div>
                           <tr class="border">
                             <td><strong>Jenis baja</strong></td>
                             <td><strong>Kekerapan</strong></td>
