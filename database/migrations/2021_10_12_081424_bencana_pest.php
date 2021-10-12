@@ -14,8 +14,17 @@ class BencanaPest extends Migration
     public function up()
     {
         Schema::create('bencana_pest', function (Blueprint $table) {
-            $table->foreignId('bencana_id')->constrained();
-            $table->foreignId('pest_id')->constrained();
+            $table->foreignId('bencana_id')->unsigned();
+            $table->foreignId('pest_id')->unsigned();
+            $table->foreign('bencana_id')
+                ->references('id')
+                ->on('bencanas')
+                ->onDelete('cascade');
+            $table->foreign('pest_id')
+                ->references('id')
+                ->on('pests')
+                ->onDelete('cascade');
+            
         });
     }
 

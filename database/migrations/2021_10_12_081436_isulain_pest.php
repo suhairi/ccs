@@ -14,8 +14,16 @@ class IsulainPest extends Migration
     public function up()
     {
         Schema::create('isulain_pest', function (Blueprint $table) {
-            $table->foreignId('isulain_id')->constrained();
-            $table->foreignId('pest_id')->constrained();
+            $table->foreignId('isulain_id')->unsigned();
+            $table->foreignId('pest_id')->unsigned();
+            $table->foreign('isulain_id')
+                ->references('id')
+                ->on('isulains')
+                ->onDelete('cascade');
+            $table->foreign('pest_id')
+                ->references('id')
+                ->on('pests')
+                ->onDelete('cascade');
         });
     }
 

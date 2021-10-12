@@ -14,8 +14,16 @@ class PerosakPest extends Migration
     public function up()
     {
         Schema::create('perosak_pest', function (Blueprint $table) {
-            $table->foreignId('perosak_id')->constrained();
-            $table->foreignId('pest_id')->constrained();
+            $table->foreignId('perosak_id')->unsigned();
+            $table->foreignId('pest_id')->unsigned();
+            $table->foreign('perosak_id')
+                ->references('id')
+                ->on('perosaks')
+                ->onDelete('cascade');
+            $table->foreign('pest_id')
+                ->references('id')
+                ->on('pests')
+                ->onDelete('cascade');
         });
         
     }
