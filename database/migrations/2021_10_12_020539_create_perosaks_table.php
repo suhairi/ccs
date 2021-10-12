@@ -15,7 +15,7 @@ class CreatePerosaksTable extends Migration
     {
         Schema::create('perosaks', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('nama');
         });
     }
 

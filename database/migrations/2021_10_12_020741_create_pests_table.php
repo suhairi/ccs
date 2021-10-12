@@ -15,7 +15,7 @@ class CreatePestsTable extends Migration
     {
         Schema::create('pests', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('season_id');
         });
     }
 

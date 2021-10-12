@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Bencana extends Model
 {
     use HasFactory;
+
+    public $timestamps = false;
+    protected $fillable = ['nama'];
 }

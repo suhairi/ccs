@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Perosak extends Model
 {
     use HasFactory;
+
+    public $timestamps = false;
+    protected $fillable = ['nama'];
 }
