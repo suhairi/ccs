@@ -65,6 +65,22 @@
                           <td><input type="text" name="perosak"></td>
                           <td><input type="text" name="peratusPerosak" value="0" onClick="this.select();"></td>
                         </tr>
+                        <tr class="border">
+                          <td class="text-center">Penyakit</td>
+                          <td><input type="text" name="perosak"></td>
+                          <td><input type="text" name="peratusPerosak" value="0" onClick="this.select();"></td>
+                        </tr>
+                        <tr class="border">
+                          <td class="text-center">Bencana</td>
+                          <td><input type="text" name="perosak"></td>
+                          <td><input type="text" name="peratusPerosak" value="0" onClick="this.select();"></td>
+                        </tr>
+                        <tr class="border">
+                          <td class="text-center">Lain</td>
+                          <td><input type="text" name="perosak"></td>
+                          <td><input type="text" name="peratusPerosak" value="0" onClick="this.select();"></td>
+                        </tr>
+                        
                       </table>
              
                 </div>
