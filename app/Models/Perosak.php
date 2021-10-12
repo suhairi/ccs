@@ -11,4 +11,9 @@ class Perosak extends Model
 
     public $timestamps = false;
     protected $fillable = ['nama'];
+
+    public function pest() {
+
+        return $this->belongsToMany(Pest::class);
+    }
 }

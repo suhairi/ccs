@@ -71,13 +71,12 @@ class SeasonController extends Controller
         $request['region_id']   = $region->region_id;
 
         Session::put('phase', $request['phase']);
-        Session::put('season_id', $request['season_id']);
+        // Session::put('season_id', $request['season_id']);
         Session::put('locality_id', $request['locality_id']);   
 
         // Check wether the farmer's SEASON has been recorded.
 
         $farmer = Season::where('farmer_id', $request['farmer_id'])
-                        ->where('season_id', $request['season_id'])
                         ->where('phase', $request['phase'])
                         ->where('locality_id', $request['locality_id'])
                         ->first();
@@ -91,7 +90,9 @@ class SeasonController extends Controller
         }
 
         // store here
-        if(Season::create($request->all())) {
+        if($season = Season::create($request->all())) {
+
+            Session::put('season_id', $season->id);
 
             Session::flash('success', 'Berjaya');
             return redirect()->route('tanaman');
@@ -133,17 +134,18 @@ class SeasonController extends Controller
         $tarikhJangkaTuai = Carbon::createFromFormat('Y-m-d', $request->tarikhTanam);
         $tarikhJangkaTuai = $tarikhJangkaTuai->addDays(110);
 
-        // dd(Session::all());
-
         $request['tarikhJangkaTuai'] = $tarikhJangkaTuai;
-        $request['farmer_id'] = Session::get('farmer_id');
+        // $request['farmer_id'] = Session::get('farmer_id');
         $request['season_id'] = Session::get('season_id');
         $request['locality_id'] = Session::get('locality_id');
 
+        unset($request['farmer_id']);
+
+        // dd($request->all());
+
         // Check wether the farmer's CROP has been recorded.
 
-        $farmer = Crop::where('farmer_id', $request['farmer_id'])
-                        ->where('season_id', $request['season_id'])
+        $farmer = Crop::where('season_id', $request['season_id'])
                         ->first();
 
         if($farmer == null) {
