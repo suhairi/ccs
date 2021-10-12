@@ -52,6 +52,10 @@ Route::middleware('auth')->group(function () {
 
     // Pembajaan
     Route::get('/pembajaan', [SeasonController::class, 'pembajaan'])->name('pembajaan');
+    Route::post('/pembajaan', [SeasonController::class, 'storeFertilizer'])->name('storeFertilizer');
+
+    // Isu Tanaman
+    Route::get('/isu', [SeasonController::class, 'issues'])->name('issues');
 
 
     // Settings

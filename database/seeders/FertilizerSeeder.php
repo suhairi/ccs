@@ -15,9 +15,6 @@ class FertilizerSeeder extends Seeder
      */
     public function run()
     {
-        Fertilizer::create(['nama' => 'Sebatian']);
-        Fertilizer::create(['nama' => 'Urea']);
-        Fertilizer::create(['nama' => 'Sebatian Tambahan']);
-        Fertilizer::create(['nama' => 'Lain-lain']);
+        
     }
 }

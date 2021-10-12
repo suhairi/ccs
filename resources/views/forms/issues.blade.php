@@ -31,7 +31,7 @@
           <div class="max-w-7xl mx-auto md:px-12 lg:px-9">
               <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                   <div class="p-6 bg-white bg-blue-200 border-b border-gray-200 text-xl font-bold">
-                     Maklumat Pembajaan
+                     Isu Tanaman
                   </div> 
               </div>            
           </div>
@@ -56,56 +56,15 @@
                   <input type="hidden" name="farmer_id" value="{{ Session::get('farmer_id') }}">
                   <table class="w-full tr-even:bg-grey-light">
                     <tr class="border">
-                          <td><strong>Jenis baja</strong></td>
-                          <td><strong>Kekerapan</strong></td>
-                          <td><strong>Tarikh</strong></td>
-                          <td><strong>KG/Relung</strong></td>
+                          <td><strong>Serangan</strong></td>
+                          <td><strong>Jenis Kerosakan</strong></td>
+                          <td><strong>% Kerosakan</strong></td>
                         </tr>
                         <tr class="border">
-                          <td rowspan="2">Sebatian</td>
-                          <td class="text-center">1</td>
-                          <td><input type="date" name="sebatian1Date"></td>
-                          <td><input type="text" name="sebatian1" value="0" onClick="this.select();"></td>
+                          <td class="text-center">Serangan Perosak</td>
+                          <td><input type="text" name="perosak"></td>
+                          <td><input type="text" name="peratusPerosak" value="0" onClick="this.select();"></td>
                         </tr>
-                        <tr class="border">
-                          <td class="text-center">2</td>
-                          <td><input type="date" name="sebatian2Date"></td>
-                          <td><input type="text" name="sebatian2" value="0" onClick="this.select();"></td>
-                        </tr>
-                        <tr class="border">
-                          <td rowspan="2">Urea</td>
-                          <td class="text-center">1</td>
-                          <td><input type="date" name="urea1Date"></td>
-                          <td><input type="text" name="urea1" value="0" onClick="this.select();"></td>
-                        </tr>
-                        <tr class="border">
-                          <td class="text-center">2</td>
-                          <td><input type="date" name="urea2Date"></td>
-                          <td><input type="text" name="urea2" value="0" onClick="this.select();"></td>
-                        </tr>
-                        <tr class="border">
-                          <td rowspan="2">Sebatian Tambahan</td>
-                          <td class="text-center">1</td>
-                          <td><input type="date" name="tambahan1Date"></td>
-                          <td><input type="text" name="tambahan1" value="0" onClick="this.select();"></td>
-                        </tr>
-                        <tr class="border">
-                          <td class="text-center">2</td>
-                          <td><input type="date" name="tambahan2Date"></td>
-                          <td><input type="text" name="tambahan2" value="0" onClick="this.select();"></td>
-                        </tr>
-                        <tr class="border">
-                          <td rowspan="2">Lain</td>
-                          <td class="text-center">1</td>
-                          <td><input type="date" name="lain1Date"></td>
-                          <td><input type="text" name="lain1" value="0" onClick="this.select();"></td>
-                        </tr>
-                        <tr class="border">
-                          <td class="text-center">2</td>
-                          <td><input type="date" name="lain2Date"></td>
-                          <td><input type="text" name="lain2" value="0" onClick="this.select();"></td>
-                        </tr>
-
                       </table>
              
                 </div>
@@ -114,7 +73,7 @@
                   <div class="md:w-5/12"></div>
                   <div class="md:w-7/12">
                     <button class="shadow bg-blue-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
-                      Seterusnya >>
+                      Rekod >>
                     </button>
                   </div>
                 </div>

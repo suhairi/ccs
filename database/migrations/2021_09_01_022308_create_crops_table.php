@@ -15,7 +15,6 @@ class CreateCropsTable extends Migration
     {
         Schema::create('crops', function (Blueprint $table) {
             $table->id();
-            $table->integer('pesawah_id');
             $table->foreignId('season_id');
             $table->string('variety_id');
             $table->string('method_id');

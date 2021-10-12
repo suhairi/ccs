@@ -8,7 +8,6 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto md:px-12 lg:px-9">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-
                 @if ($message = Session::get('success'))
                   <div class="p-6 bg-white bg-green-200 border-b border-gray-200 text-xl font-bold">
                     <div class="alert alert-success alert-block">
@@ -16,6 +15,15 @@
                             <strong>{{ $message }}</strong>
                     </div>
                   </div>
+                @endif
+                @if ($message = Session::get('fail'))
+                  <div class="p-6 bg-white bg-red-200 border-b border-gray-200 text-xl font-bold">
+                    <div class="alert alert-success alert-block">
+                      <button type="button" class="close" data-dismiss="alert">×</button> 
+                            <strong>{{ $message }}</strong>
+                    </div>
+                  </div>
+                  <br />
                 @endif
                 <div class="p-6 bg-white bg-blue-200 border-b border-gray-200 text-xl font-bold">
                    Maklumat Pesawah

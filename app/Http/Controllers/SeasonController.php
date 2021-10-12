@@ -14,6 +14,7 @@ use App\Models\Season;
 use App\Models\Variety;
 use App\Models\Method;
 use App\Models\Crop;
+use App\Models\Fertilizer;
 
 
 class SeasonController extends Controller
@@ -36,7 +37,7 @@ class SeasonController extends Controller
 
     public function musim(Request $request, $id) {
 
-        Session::put('pesawah_id', $id);
+        Session::put('farmer_id', $id);
 
         $farmers = Farmer::all();
         $farmer = $farmers->find($id);
@@ -53,7 +54,7 @@ class SeasonController extends Controller
 
     public function store(Request $request) {
 
-        // dd($request->pesawah_id);
+        // dd($request->farmer_id);
 
         $attributes = $request->validate([
                         'nama'          => 'required',
@@ -75,7 +76,7 @@ class SeasonController extends Controller
 
         // Check wether the farmer's SEASON has been recorded.
 
-        $farmer = Season::where('pesawah_id', $request['pesawah_id'])
+        $farmer = Season::where('farmer_id', $request['farmer_id'])
                         ->where('season_id', $request['season_id'])
                         ->where('phase', $request['phase'])
                         ->where('locality_id', $request['locality_id'])
@@ -105,7 +106,7 @@ class SeasonController extends Controller
         $varieties  = Variety::all();
         $methods    = Method::all();
 
-        $farmer = Farmer::where('id', Session::get('pesawah_id'))->first();
+        $farmer = Farmer::where('id', Session::get('farmer_id'))->first();
 
         return view('forms.tanaman')
                 ->with('farmer', $farmer)
@@ -135,13 +136,13 @@ class SeasonController extends Controller
         // dd(Session::all());
 
         $request['tarikhJangkaTuai'] = $tarikhJangkaTuai;
-        $request['pesawah_id'] = Session::get('pesawah_id');
+        $request['farmer_id'] = Session::get('farmer_id');
         $request['season_id'] = Session::get('season_id');
         $request['locality_id'] = Session::get('locality_id');
 
         // Check wether the farmer's CROP has been recorded.
 
-        $farmer = Crop::where('pesawah_id', $request['pesawah_id'])
+        $farmer = Crop::where('farmer_id', $request['farmer_id'])
                         ->where('season_id', $request['season_id'])
                         ->first();
 
@@ -165,9 +166,56 @@ class SeasonController extends Controller
 
     public function pembajaan() {
 
-        $farmer = Farmer::where('id', Session::get('pesawah_id'))->first();
+        $farmer = Farmer::where('id', Session::get('farmer_id'))->first();
 
         return view('forms.fertilizer')
+                ->with('farmer', $farmer);
+    }
+
+    public function storeFertilizer(Request $request) {
+
+        // dd($request->all());
+
+        $fertilizer = $request->validate([
+                'farmer_id'     => 'required|numeric',
+                'season_id'     => 'required|numeric',
+                'sebatian1'     => 'required',
+                'sebatian2'     => 'required',
+                'sebatian1Date' => 'required|date',
+                'sebatian2Date' => 'required|date',
+                'urea1'         => 'required',
+                'urea2'         => 'required',
+                'urea1Date'     => 'required|date',
+                'urea2Date'     => 'required|date',
+                'tambahan1'     => 'required',
+                'tambahan2'     => 'required',
+                'tambahan1Date' => 'required|date',
+                'tambahan2Date' => 'required|date',
+                'lain1'         => 'required',
+                'lain2'         => 'required',
+                'lain1Date'     => 'required|date',
+                'lain2Date'     => 'required|date',
+            ]);
+
+        // dd($request->all());
+
+        if(Fertilizer::create($request->all())) {
+
+            Session::flash('success', 'Berjaya');
+            return redirect()->route('issues');
+        } else {
+            Session::flash('fail', 'Gagal');
+            return redirect('forms.pembajaan')->withInput($request->all());
+        }
+    }
+
+    public function issues() {
+
+        // dd('ISSUES');
+
+        $farmer = Farmer::where('id', Session::get('farmer_id'))->first();
+
+        return view('forms.issues')
                 ->with('farmer', $farmer);
     }
 

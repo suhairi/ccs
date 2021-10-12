@@ -15,8 +15,8 @@ class CreateSeasonsTable extends Migration
     {
         Schema::create('seasons', function (Blueprint $table) {
             $table->id();
-            $table->string('season_id');
-            $table->foreignId('pesawah_id');
+            $table->integer('season_id');
+            $table->foreignId('farmer_id');
             $table->foreignId('region_id');
             $table->string('phase');
             $table->foreignId('locality_id');

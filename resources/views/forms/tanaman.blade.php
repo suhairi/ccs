@@ -25,7 +25,7 @@
                 <form class="w-full max-w-sm" method="POST" action="{{ route('storeTanaman') }}">
                 @csrf
 
-                  <input type="hidden" name="pesawah_id" value="{{ Session::get('pesawah_id') }}">
+                  <input type="hidden" name="farmer_id" value="{{ Session::get('farmer_id') }}">
 
                   <div class="md:flex md:items-center mb-2 mt-1">
                     <div class="md:w-5/12">
