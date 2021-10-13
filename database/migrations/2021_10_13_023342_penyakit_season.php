@@ -26,6 +26,8 @@ class PenyakitSeason extends Migration
                 ->references('id')
                 ->on('seasons')
                 ->onDelete('cascade');
+
+            $table->float('peratusKerosakan', 4, 2);
         });
     }
 

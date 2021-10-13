@@ -56,6 +56,7 @@ Route::middleware('auth')->group(function () {
 
     // Isu Tanaman
     Route::get('/isu', [SeasonController::class, 'issues'])->name('issues');
+    Route::post('/isu', [SeasonController::class, 'storeIssues'])->name('storeIssues');
 
 
     // Settings

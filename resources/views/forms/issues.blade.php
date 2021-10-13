@@ -40,7 +40,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200 text-sm font-bold">
 
-                  <form class="w-full max-w-sm" method="POST" action="{{ route('storeFertilizer') }}">
+                  <form class="w-full max-w-sm" method="POST" action="{{ route('storeIssues') }}">
                   @csrf
                   <input type="hidden" name="season_id" value="{{ Session::get('season_id') }}">
                   <div class="md:flex md:items-center mb-2 mt-2">
@@ -57,28 +57,52 @@
                   <table class="w-full tr-even:bg-grey-light">
                     <tr class="border">
                           <td><strong>Serangan</strong></td>
-                          <td><strong>Jenis Kerosakan</strong></td>
+                          <td align="center"><strong>Jenis Kerosakan</strong></td>
                           <td><strong>% Kerosakan</strong></td>
                         </tr>
                         <tr class="border">
                           <td class="text-center">Serangan Perosak</td>
-                          <td><input type="text" name="perosak"></td>
+                          <td>
+                            <select name="perosak" multiple>
+                              @foreach($perosaks as $perosak)
+                                <option value="{{ $perosak->id }}">{{ $perosak->nama }}</option>
+                              @endforeach
+
+                            </select>
+                          </td>
                           <td><input type="text" name="peratusPerosak" value="0" onClick="this.select();"></td>
                         </tr>
                         <tr class="border">
-                          <td class="text-center">Penyakit</td>
-                          <td><input type="text" name="perosak"></td>
-                          <td><input type="text" name="peratusPerosak" value="0" onClick="this.select();"></td>
+                          <tr class="border">
+                          <td class="text-center">Serangan Penyakit</td>
+                          <td>
+                            <select name="penyakit" multiple>
+                              @foreach($penyakits as $penyakit)
+                                <option value="{{ $penyakit->id }}">{{ $penyakit->nama }}</option>
+                              @endforeach
+
+                            </select>
+                          </td>
+                          <td><input type="text" name="peratusPenyakit" value="0" onClick="this.select();"></td>
                         </tr>
                         <tr class="border">
+                          <tr class="border">
                           <td class="text-center">Bencana</td>
-                          <td><input type="text" name="perosak"></td>
-                          <td><input type="text" name="peratusPerosak" value="0" onClick="this.select();"></td>
+                          <td>
+                            <select name="bencana" multiple>
+                              @foreach($bencanas as $bencana)
+                                <option value="{{ $bencana->id }}">{{ $bencana->nama }}</option>
+                              @endforeach
+
+                            </select>
+                          </td>
+                          <td><input type="text" name="peratusBencana" value="0" onClick="this.select();"></td>
                         </tr>
                         <tr class="border">
-                          <td class="text-center">Lain</td>
-                          <td><input type="text" name="perosak"></td>
-                          <td><input type="text" name="peratusPerosak" value="0" onClick="this.select();"></td>
+                          <tr class="border">
+                          <td class="text-center">Isu Lain</td>
+                          <td><textarea name="isulain" placeholder="Taip..."></textarea></td>
+                          <td><input type="text" name="peratusIsulain" value="0" onClick="this.select();"></td>
                         </tr>
                         
                       </table>

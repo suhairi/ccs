@@ -20,8 +20,8 @@ class CreateSeasonsTable extends Migration
             $table->string('phase');
             $table->foreignId('locality_id');
             $table->integer('nolot');
-            $table->float('luaslot', 8, 2);
-            $table->float('luasusaha', 8, 2);
+            $table->float('luaslot', 9, 2);
+            $table->float('luasusaha', 9, 2);
             $table->string('koordinat');
         });
     }

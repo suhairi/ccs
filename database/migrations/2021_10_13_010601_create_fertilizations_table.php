@@ -20,8 +20,8 @@ class CreateFertilizationsTable extends Migration
             $table->string('kekerapan');
             $table->date('tarikh');
             $table->date('hlt');
-            $table->float('kgPerRelung');
-            $table->float('kgPerHektar');
+            $table->float('kgPerRelung', 9, 4);
+            $table->float('kgPerHektar', 9, 4);
         });
     }
 
