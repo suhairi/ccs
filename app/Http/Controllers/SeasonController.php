@@ -316,6 +316,11 @@ class SeasonController extends Controller
     public function storeIssues(Request $request) {
 
         dd($request->all());
+
+        $season = Season::findOrFail($request['season_id']);
+        $season->perosak()->attach($request['perosak'], ['peratusKerosakan' => $request['peratusPerosak']]);
+
+        dd($request->all());
     }
 
 
