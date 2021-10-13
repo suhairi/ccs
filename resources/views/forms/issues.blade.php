@@ -63,7 +63,7 @@
                         <tr class="border">
                           <td class="text-center">Serangan Perosak</td>
                           <td>
-                            <select name="perosak" multiple>
+                            <select name="perosak[]" multiple>
                               @foreach($perosaks as $perosak)
                                 <option value="{{ $perosak->id }}">{{ $perosak->nama }}</option>
                               @endforeach
@@ -76,7 +76,7 @@
                           <tr class="border">
                           <td class="text-center">Serangan Penyakit</td>
                           <td>
-                            <select name="penyakit" multiple>
+                            <select name="penyakit[]" multiple>
                               @foreach($penyakits as $penyakit)
                                 <option value="{{ $penyakit->id }}">{{ $penyakit->nama }}</option>
                               @endforeach
@@ -89,7 +89,7 @@
                           <tr class="border">
                           <td class="text-center">Bencana</td>
                           <td>
-                            <select name="bencana" multiple>
+                            <select name="bencana[]" multiple>
                               @foreach($bencanas as $bencana)
                                 <option value="{{ $bencana->id }}">{{ $bencana->nama }}</option>
                               @endforeach

@@ -319,6 +319,8 @@ class SeasonController extends Controller
 
         $season = Season::findOrFail($request['season_id']);
         $season->perosak()->attach($request['perosak'], ['peratusKerosakan' => $request['peratusPerosak']]);
+        $season->penyakit()->attach($request['penyakit'], ['peratusKerosakan' => $request['peratusPenyakit']]);
+        $season->bencana()->attach($request['bencana'], ['peratusKerosakan' => $request['peratusBencana']]);
 
         dd($request->all());
     }
