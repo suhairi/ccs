@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class PenyakitPest extends Migration
+class BencanaSeason extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,18 @@ class PenyakitPest extends Migration
      */
     public function up()
     {
-        Schema::create('penyakit_pest', function (Blueprint $table) {
-            $table->foreignId('penyakit_id')->unsigned();
-            $table->foreignId('pest_id')->unsigned();
-            $table->foreign('penyakit_id')
+        Schema::create('bencana_season', function (Blueprint $table) {
+            
+            $table->bigInteger('bencana_id')->unsigned();
+            $table->foreign('bencana_id')
                 ->references('id')
-                ->on('penyakits')
+                ->on('bencanas')
                 ->onDelete('cascade');
-            $table->foreign('pest_id')
+
+            $table->bigInteger('season_id')->unsigned();
+            $table->foreign('season_id')
                 ->references('id')
-                ->on('pests')
+                ->on('seasons')
                 ->onDelete('cascade');
         });
     }
@@ -34,6 +36,6 @@ class PenyakitPest extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('bencana_season');
     }
 }

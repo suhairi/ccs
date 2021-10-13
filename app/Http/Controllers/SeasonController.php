@@ -15,6 +15,7 @@ use App\Models\Variety;
 use App\Models\Method;
 use App\Models\Crop;
 use App\Models\Fertilizer;
+use App\Models\Fertilization;
 
 
 class SeasonController extends Controller
@@ -178,37 +179,26 @@ class SeasonController extends Controller
 
         // dd($request->all());
 
-        $fertilizer = $request->validate([
-                'farmer_id'     => 'required|numeric',
-                'season_id'     => 'required|numeric',
-                'sebatian1'     => 'required',
-                'sebatian2'     => 'required',
-                'sebatian1Date' => 'required|date',
-                'sebatian2Date' => 'required|date',
-                'urea1'         => 'required',
-                'urea2'         => 'required',
-                'urea1Date'     => 'required|date',
-                'urea2Date'     => 'required|date',
-                'tambahan1'     => 'required',
-                'tambahan2'     => 'required',
-                'tambahan1Date' => 'required|date',
-                'tambahan2Date' => 'required|date',
-                'lain1'         => 'required',
-                'lain2'         => 'required',
-                'lain1Date'     => 'required|date',
-                'lain2Date'     => 'required|date',
-            ]);
+        // Store Sebatian -> id = 1
+        $sebatian = new Fertilization;
 
-        // dd($request->all());
+        $sebatian->fertilizer_id    = 1;
+        $sebatian->season_id        = $request['season_id'];
+        $sebatian->kekerapan        = 1;
+        $sebatian->tarikh           = $request['sebatian1Date'];
+        $hlt                        = Carbon::createFromFormat('Y-m-d', $request['sebatian1Date']);
+        $hlt                        = $hlt->addDays(110);
+        $sebatian->hlt              = $hlt->format('Y-m-d');
+        $sebatian->kgPerRelung      = $request['sebatian1'];
+        $sebatian->kgPerHektar      = $request['sebatian1'] / 3.475;
 
-        if(Fertilizer::create($request->all())) {
+        $sebatian->save();
+        
 
-            Session::flash('success', 'Berjaya');
-            return redirect()->route('issues');
-        } else {
-            Session::flash('fail', 'Gagal');
-            return redirect('forms.pembajaan')->withInput($request->all());
-        }
+
+        dd($sebatian);
+
+
     }
 
     public function issues() {
@@ -220,6 +210,7 @@ class SeasonController extends Controller
         return view('forms.issues')
                 ->with('farmer', $farmer);
     }
+
 
 
 }

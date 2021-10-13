@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class PerosakPest extends Migration
+class IsulainSeason extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,20 @@ class PerosakPest extends Migration
      */
     public function up()
     {
-        Schema::create('perosak_pest', function (Blueprint $table) {
-            $table->foreignId('perosak_id')->unsigned();
-            $table->foreignId('pest_id')->unsigned();
-            $table->foreign('perosak_id')
+        Schema::create('isulain_season', function (Blueprint $table) {
+            
+            $table->bigInteger('isulain_id')->unsigned();
+            $table->foreign('isulain_id')
                 ->references('id')
-                ->on('perosaks')
+                ->on('isulains')
                 ->onDelete('cascade');
-            $table->foreign('pest_id')
+
+            $table->bigInteger('season_id')->unsigned();
+            $table->foreign('season_id')
                 ->references('id')
-                ->on('pests')
+                ->on('seasons')
                 ->onDelete('cascade');
         });
-        
     }
 
     /**
@@ -35,6 +36,6 @@ class PerosakPest extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('isulain_season');
     }
 }
