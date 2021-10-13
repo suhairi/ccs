@@ -315,14 +315,37 @@ class SeasonController extends Controller
 
     public function storeIssues(Request $request) {
 
-        dd($request->all());
+        // dd($request->all());
 
         $season = Season::findOrFail($request['season_id']);
-        $season->perosak()->attach($request['perosak'], ['peratusKerosakan' => $request['peratusPerosak']]);
-        $season->penyakit()->attach($request['penyakit'], ['peratusKerosakan' => $request['peratusPenyakit']]);
-        $season->bencana()->attach($request['bencana'], ['peratusKerosakan' => $request['peratusBencana']]);
 
-        dd($request->all());
+        foreach($request['perosak'] as $item) {
+
+            $season->perosak()->attach($item, ['peratusKerosakan' => $request['peratusPerosak']]);
+        }
+
+        foreach($request['penyakit'] as $item) {
+
+            $season->penyakit()->attach($item, ['peratusKerosakan' => $request['peratusPenyakit']]);
+        }
+
+        foreach($request['bencana'] as $item) {
+
+            $season->bencana()->attach($item, ['peratusKerosakan' => $request['peratusBencana']]);
+        }
+
+        if(!empty($request['isulain'])) {
+
+            $isulain = new Isulain;
+            $isulain->season_id         = $request['season_id'];
+            $isulain->deskripsi         = $request['isulain'];
+            $isulain->peratusKerosakan  = $request['peratusIsulain'];
+            $isulain->save();
+        }       
+
+        Session::flash('success', 'Berjaya.');
+        return redirect()->route('musim');
+
     }
 
 

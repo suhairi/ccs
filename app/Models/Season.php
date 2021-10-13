@@ -36,14 +36,11 @@ class Season extends Model
     }
 
     public function penyakit() {
-        return $this->belongsToMany(penyakit::class);
+        return $this->belongsToMany(Penyakit::class);
     }
 
     public function bencana() {
         return $this->belongsToMany(Bencana::class);
     }
-
-    
-
 
 }

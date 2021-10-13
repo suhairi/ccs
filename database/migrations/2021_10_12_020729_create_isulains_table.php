@@ -15,7 +15,8 @@ class CreateIsulainsTable extends Migration
     {
         Schema::create('isulains', function (Blueprint $table) {
             $table->id();
-            $table->text('deskripsi');
+            $table->foreignId('season_id');
+            $table->text('deskripsi')->nullable();
             $table->float('peratusKerosakan', 4, 2);
 
         });

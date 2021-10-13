@@ -10,10 +10,10 @@ class Isulain extends Model
     use HasFactory;
 
     public $timestamps = false;
-    protected $fillable = ['nama'];
+    protected $fillable = ['season_id', 'deskripsi', 'peratusKerosakan'];
 
-    public function pest() {
+    public function season() {
 
-        return $this->belongsToMany(Pest::class);
+        return $this->belongsTo(Isulain::class);
     }
 }
