@@ -56,6 +56,16 @@ class DatabaseSeeder extends Seeder
         // Bencana
         $this->call([BencanaSeeder::class]);
 
+        // Settings - Musim
+        $this->call([MusimSeeder::class]);
+
+        // Milikan
+        $this->call([MilikanSeeder::class]);
+
+        
+
+        
+
         
 
 

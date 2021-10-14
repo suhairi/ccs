@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Farmer;
 use App\Models\Education;
+use App\Models\Milikan;
 
 
 
@@ -16,8 +17,11 @@ class FarmerController extends Controller
     public function index() {
 
         $educations = Education::pluck('nama', 'id');
+        $milikans   = Milikan::all();
 
-        return view('forms.pesawah')->with('educations', $educations);
+        return view('forms.pesawah')
+                ->with('educations', $educations)
+                ->with('milikans', $milikans);
     }
 
 
@@ -30,7 +34,7 @@ class FarmerController extends Controller
             'nokp'          => 'required|numeric|unique:farmers',
             'education_id'  => 'required',
             'notel'         => 'required|numeric',
-            'milikan'       => 'required',
+            'milikan_id'    => 'required',
             'alamat'        => 'required|min:10'
         ]);
 
@@ -55,7 +59,6 @@ class FarmerController extends Controller
         
     }
 
-
     protected function getJantina($nokp) {
 
         if($nokp % 2 == 0)
@@ -69,4 +72,36 @@ class FarmerController extends Controller
 
         return 12;
     }
+
+    public function pesawah(Request $request) {
+
+        // dd($request->all());
+
+        $educations     = Education::all();
+        $farmer         = Farmer::findOrFail($request['id']);
+        $milikans       = Milikan::all();
+
+        return view('lists.pesawah2')
+                ->with('farmer', $farmer)
+                ->with('educations', $educations)
+                ->with('milikans', $milikans);
+    }
+
+    public function pesawahUpdate(Request $request) {
+
+        // dd($request->all());
+
+        $farmer = Farmer::findOrFail($request['farmer_id']);
+        $farmer->nokp           = $request['nokp'];
+        $farmer->education_id   = $request['education_id'];
+        $farmer->milikan_id     = $request['milikan_id'];
+        $farmer->notel          = $request['notel'];
+        $farmer->alamat         = $request['alamat'];
+        $farmer->save();
+
+        Session::flash('success', 'Berjaya.');
+        return redirect()->route('senaraiPesawah');
+    }
+
+
 }

@@ -14,12 +14,18 @@ class Farmer extends Model
     protected $primaryKey = 'id';
 
     public $timestamps = false;    
-    protected $fillable = ["nama", "nokp", "jantina", "umur", "education_id", "milikan", "notel", "alamat"];
+    protected $fillable = ["nama", "nokp", "jantina", "umur", "education_id", "milikan_id", "notel", "alamat"];
 
 
     public function education() {
         return $this->belongsTo(Education::class);
     }
+
+    public function milikan() {
+        return $this->belongsTo(Milikan::class);
+    }
+
+    
 
 
 }

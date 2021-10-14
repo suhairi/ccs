@@ -13,8 +13,7 @@ class BencanaSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
+    public function run() {
         Bencana::create(['nama' => 'Rebah']);
         Bencana::create(['nama' => 'Kemarau']);
         Bencana::create(['nama' => 'Banjir']);

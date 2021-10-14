@@ -74,8 +74,10 @@
                         </x-slot>
 
                         <x-slot name="content">
-                            <x-dropdown-link :href="route('dashboard')">Laporan 1..</x-dropdown-link>
-                            <x-dropdown-link :href="route('dashboard')">Laporan 2..</x-dropdown-link>
+                            <x-dropdown-link :href="route('bancian')">Maklumat Banci Pesawah</x-dropdown-link>
+                            <x-dropdown-link :href="route('dashboard')">Laporan Hasil</x-dropdown-link>
+                            <x-dropdown-link :href="route('dashboard')">Laporan Hakmilik</x-dropdown-link>
+                            <x-dropdown-link :href="route('dashboard')">Laporan Kaedah Tanam</x-dropdown-link>
                         </x-slot>
                     </x-dropdown>
                 </div>
@@ -101,6 +103,7 @@
                             </x-slot>
 
                             <x-slot name="content">
+                                <x-dropdown-link :href="route('settings.musim')">Musim & Tahun</x-dropdown-link>
                                 <x-dropdown-link :href="route('settings.users')">Users</x-dropdown-link>
                                 <x-dropdown-link :href="route('settings.educations')">Educations</x-dropdown-link>
                                 <x-dropdown-link :href="route('settings.localitites')">Localitites</x-dropdown-link>

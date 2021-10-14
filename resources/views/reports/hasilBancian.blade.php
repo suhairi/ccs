@@ -23,7 +23,6 @@
                             <th class="text-left">Nama</th>
                             <th class="text-left">No KP</th>
                             <th class="text-left">Jantina</th>
-                            <th class="text-left">Pendidikan</th>
                             <th class="text-left">Milikan</th>
                             <th class="text-left">No Tel</th>
                             <th class="text-left">Alamat</th>
@@ -40,7 +39,7 @@
                             @foreach($farmers as $farmer)
                                 <tr>
                                   <td class="text-center">{{ $loop->iteration }}</td>
-                                  <td class="text-blue-500"><a href="{{ route('musim2', $farmer->id) }}">{{ $farmer->nama }}</a></td>
+                                  <td class="text-blue-500"><a href="{{ route('maklumatBancian', $farmer->id) }}">{{ $farmer->nama }}</a></td>
                                   <td>{{ $farmer->nokp }}</td>
                                   <td class="text-center">{{ substr($farmer->jantina, 0, 1) }}</td>
                                   <td>{{ $farmer->milikan->nama }}</td>

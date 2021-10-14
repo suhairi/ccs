@@ -40,10 +40,10 @@
                           <td class="text-center">{{ substr($farmer->jantina, 0, 1) }}</td>
                           <td class="text-center">{{ $farmer->umur }}</td>
                           <td>{{ $farmer->education->nama }}</td>
-                          <td>{{ $farmer->milikan }}</td>
+                          <td>{{ $farmer->milikan->nama }}</td>
                           <td>{{ $farmer->notel }}</td>
                           <td>{{ $farmer->alamat }}</td>
-                          <td>[ <a href="#" class="text-blue-500">Modify</a> ] [ <a href="#" class="text-blue-500">Delete</a> ]</td>
+                          <td>[ <a href="{{ route('pesawah.update.form', $farmer->id) }}" class="text-blue-500">Modify</a> ] [ <a href="#" class="text-blue-500">Delete</a> ]</td>
                         </tr>
                       @endforeach
                     </tbody>

@@ -8,6 +8,8 @@ use App\Http\Controllers\SeasonController;
 use App\Http\Controllers\SenaraiController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\FertilizerController;
+use App\Http\Controllers\MusimController;
+use App\Http\Controllers\ReportController;
 
 use App\Models\User;
 
@@ -38,6 +40,8 @@ Route::middleware('auth')->group(function () {
     //Pesawah
     Route::get('/pesawah', [FarmerController::class, 'index'])->name('pesawah');
     Route::post('/pesawah', [FarmerController::class, 'store'])->name('postPesawah');
+    Route::get('/pesawah/{id}', [FarmerController::class, 'pesawah'])->name('pesawah.update.form');
+    Route::post('/pesawah/update', [FarmerController::class, 'pesawahUpdate'])->name('pesawah.update');
 
     // Musim
     Route::get('/musim', [SeasonController::class, 'index'])->name('musim');
@@ -58,9 +62,25 @@ Route::middleware('auth')->group(function () {
     Route::get('/isu', [SeasonController::class, 'issues'])->name('issues');
     Route::post('/isu', [SeasonController::class, 'storeIssues'])->name('storeIssues');
 
+    // ######################
+    //       Reports
+    // ######################
+    Route::group(['namespace' => 'reports'], function() {
 
-    // Settings
+        Route::get('/bancian', [ReportController::class, 'bancian'])->name('bancian');
+        Route::post('/bancian', [ReportController::class, 'carianBancian'])->name('carianBancian');
+        Route::get('/bancian/{id}', [ReportController::class, 'maklumatBancian'])->name('maklumatBancian');
+
+
+    });
+
+    // ######################
+    //        Settings
+    // ######################
     Route::group(['namespace' => 'settings'], function() {
+
+        Route::get('/settings/musim', [MusimController::class, 'index'])->name('settings.musim');
+        Route::post('/settings/musim', [MusimController::class, 'update'])->name('settings.musim.update');
 
         Route::get('/users', [SettingController::class, 'index'])->name('settings.users');
         Route::get('/users/{id}', [SettingController::class, 'destroy'])->name('settings.user.delete');
@@ -76,6 +96,8 @@ Route::middleware('auth')->group(function () {
 
         
     });
+
+
 
     // Senarai 
     Route::get('/senarai/pesawah', [SenaraiController::class, 'index'])->name('senaraiPesawah');
