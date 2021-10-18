@@ -32,18 +32,6 @@ class Season extends Model
         return $this->belongsTo(Locality::class);
     }
 
-    public function perosak() {
-        return $this->belongsToMany(Perosak::class);
-    }
-
-    public function penyakit() {
-        return $this->belongsToMany(Penyakit::class);
-    }
-
-    public function bencana() {
-        return $this->belongsToMany(Bencana::class);
-    }
-
     public function musim() {
         return $this->belongsTo(Musim::class);
     }

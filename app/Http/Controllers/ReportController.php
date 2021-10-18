@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Session;
 
 use App\Models\Farmer;
 use App\Models\Season;
+use App\Models\Crop;
+use App\Models\Variety;
 
 class ReportController extends Controller
 {
@@ -31,12 +33,16 @@ class ReportController extends Controller
 
         $season = Season::where('farmer_id', $id)->get()->last();
 
+        $crop   = Crop::where('season_id', $season->id)->get()->last();
+
         if($season == null) {
             
             Session::flash('fail', 'Maklumat bancian ' . $farmer->nama . ', tiada dalam rekod');
             return redirect()->route('bancian');
         }
 
-        return view('reports.maklumatBancian')->with('season', $season);
+        return view('reports.maklumatBancian')
+                ->with('season', $season)
+                ->with('crop', $crop);
     }
 }

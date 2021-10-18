@@ -100,17 +100,17 @@
                             <tr>
                               <td>Lot No</td>
                               <td>:</td>
-                              <td>{{ $season->noLot }}</td>
+                              <td>{{ $season->nolot }}</td>
                             </tr>
                             <tr>
                               <td>Luas Lot (hektar)</td>
                               <td>:</td>
-                              <td>{{ $season->luasLot }}</td>
+                              <td>{{ $season->luaslot }}</td>
                             </tr>
                             <tr>
                               <td>Luas Usaha (hektar)</td>
                               <td>:</td>
-                              <td>{{ $season->luasUsaha }}</td>
+                              <td>{{ $season->luasusaha }}</td>
                             </tr>
                             <tr>
                               <td>Koordinat Sawah</td>
@@ -128,29 +128,28 @@
                             <tr>
                               <td>Varieti Padi</td>
                               <td>:</td>
-                              <td>{{ $season->musim->musim }}</td>
+                              <td>{{ $crop->variety->nama }}</td>
                             </tr>
                             <tr>
                               <td>Kaedah Tanam</td>
                               <td>:</td>
-                              <td>{{ $season->musim->musim }}</td>
+                              <td>{{ $crop->method->nama }}</td>
                             </tr>
                             <tr>
                               <td>Tarikh Tanam</td>
                               <td>:</td>
-                              <td>{{ $season->musim->musim }}</td>
+                              <td>{{ $crop->tarikhTanam }}</td>
                             </tr>
                             <tr>
                               <td>Tarikh Dijangka Tuai</td>
                               <td>:</td>
-                              <td>{{ $season->musim->musim }}</td>
+                              <td>{{ $crop->tarikhJangkaTuai }}</td>
                             </tr>
                             <tr>
                               <td>Tarikh Tuai Sebenar</td>
                               <td>:</td>
-                              <td>{{ $season->musim->musim }}</td>
-                            </tr>
-                            
+                              <td>{{ $crop->tarikhTuaiSebenar }}</td>
+                            </tr>                           
                             
                         </table>
                             
