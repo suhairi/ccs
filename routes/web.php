@@ -62,6 +62,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/isu', [SeasonController::class, 'issues'])->name('issues');
     Route::post('/isu', [SeasonController::class, 'storeIssues'])->name('storeIssues');
 
+    // Rujukan
+    Route::get('/rujukan', [SeasonController::class, 'rujukan'])->name('rujukan');
+    Route::post('rujukan', [SeasonController::class, 'storeRujukan'])->name('storeRujukan');
+
     // ######################
     //       Reports
     // ######################

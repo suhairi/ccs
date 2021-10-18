@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBencanasTable extends Migration
+class CreateHasilsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateBencanasTable extends Migration
      */
     public function up()
     {
-        Schema::create('bencanas', function (Blueprint $table) {
+        Schema::create('hasils', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
+            $table->foreignId('season_id');
+            $table->string('rujukan');
+            $table->float('hasilLot', 9, 3);
+            $table->float('hasilKgHektar', 9, 3);
         });
     }
 
@@ -26,6 +29,6 @@ class CreateBencanasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bencanas');
+        Schema::dropIfExists('hasils');
     }
 }

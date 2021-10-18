@@ -56,57 +56,83 @@
                   <input type="hidden" name="farmer_id" value="{{ Session::get('farmer_id') }}">
                   <table class="w-full tr-even:bg-grey-light">
                     <tr class="border">
-                          <td><strong>Serangan</strong></td>
-                          <td align="center"><strong>Jenis Kerosakan</strong></td>
-                          <td><strong>% Kerosakan</strong></td>
-                        </tr>
-                        <tr class="border">
-                          <td class="text-center">Serangan Perosak</td>
-                          <td>
-                            <select name="perosak[]" multiple>
-                              @foreach($perosaks as $perosak)
-                                <option value="{{ $perosak->id }}">{{ $perosak->nama }}</option>
-                              @endforeach
-
-                            </select>
-                          </td>
-                          <td><input type="text" name="peratusPerosak" value="0" onClick="this.select();"></td>
-                        </tr>
-                        <tr class="border">
-                          <tr class="border">
-                          <td class="text-center">Serangan Penyakit</td>
-                          <td>
-                            <select name="penyakit[]" multiple>
-                              @foreach($penyakits as $penyakit)
-                                <option value="{{ $penyakit->id }}">{{ $penyakit->nama }}</option>
-                              @endforeach
-
-                            </select>
-                          </td>
-                          <td><input type="text" name="peratusPenyakit" value="0" onClick="this.select();"></td>
-                        </tr>
-                        <tr class="border">
-                          <tr class="border">
-                          <td class="text-center">Bencana</td>
-                          <td>
-                            <select name="bencana[]" multiple>
-                              @foreach($bencanas as $bencana)
-                                <option value="{{ $bencana->id }}">{{ $bencana->nama }}</option>
-                              @endforeach
-
-                            </select>
-                          </td>
-                          <td><input type="text" name="peratusBencana" value="0" onClick="this.select();"></td>
-                        </tr>
-                        <tr class="border">
-                          <tr class="border">
-                          <td class="text-center">Isu Lain</td>
-                          <td><textarea name="isulain" placeholder="Taip..."></textarea></td>
-                          <td><input type="text" name="peratusIsulain" value="0" onClick="this.select();"></td>
-                        </tr>
-                        
-                      </table>
-             
+                      <td><strong>Serangan</strong></td>
+                      <td align="center"><strong>Jenis Kerosakan</strong></td>
+                      <td><strong>% Kerosakan</strong></td>
+                    </tr>
+                    <tr class="border">
+                      <td class="text-center" rowspan="8">Serangan Perosak</td>
+                      <td><input type="text" name="" value="TIKUS" readonly=""></td>
+                      <td><input type="text" name="tikus" value="0" onClick="this.select();"></td>
+                    </tr>
+                    <tr class="border">
+                      <td><input type="text" name="" value="SIPUT GONDANG" readonly=""></td>
+                      <td><input type="text" name="siputgondang" value="0" onClick="this.select();"></td>
+                    </tr>
+                    <tr class="border">
+                      <td><input type="text" name="" value="KUTU THRIP" readonly=""></td>
+                      <td><input type="text" name="kutuThrip" value="0" onClick="this.select();"></td>
+                    </tr>
+                    <tr class="border">
+                      <td><input type="text" name="" value="ULAT PENGOREK BATANG" readonly=""></td>
+                      <td><input type="text" name="pengorekBatang" value="0" onClick="this.select();"></td>
+                    </tr>
+                    <tr class="border">
+                      <td><input type="text" name="" value="ULAT GULUNG DAUN" readonly=""></td>
+                      <td><input type="text" name="gulungDaun" value="0" onClick="this.select();"></td>
+                    </tr>
+                    <tr class="border">
+                      <td><input type="text" name="" value="ULAT LAYAR" readonly=""></td>
+                      <td><input type="text" name="ulatLayar" value="0" onClick="this.select();"></td>
+                    </tr>
+                    <tr class="border">
+                      <td><input type="text" name="" value="BENA PERANG" readonly=""></td>
+                      <td><input type="text" name="benaPerang" value="0" onClick="this.select();"></td>
+                    </tr>
+                    <tr class="border">
+                      <td><input type="text" name="" value="KESING" readonly=""></td>
+                      <td><input type="text" name="kesing" value="0" onClick="this.select();"></td>
+                    </tr>
+                    <tr class="border">
+                      <td class="text-center" rowspan="4">Serangan Penyakit</td>
+                      <td><input type="text" name="" value="KARAH"></td>
+                      <td><input type="text" name="karah" value="0" onClick="this.select();"></td>
+                    </tr>
+                    <tr class="border">
+                      <td><input type="text" name="" value="HAWAR DAUN BAKTERIA"></td>
+                      <td><input type="text" name="daunBakteria" value="0" onClick="this.select();"></td>
+                    </tr>
+                    <tr class="border">
+                      <td><input type="text" name="" value="HAWAR SELUDANG"></td>
+                      <td><input type="text" name="hawarSeludang" value="0" onClick="this.select();"></td>
+                    </tr>
+                    <tr class="border">
+                      <td><input type="text" name="" value="BINTIK PERANG"></td>
+                      <td><input type="text" name="bintikPerang" value="0" onClick="this.select();"></td>
+                    </tr>                    
+                    <tr class="border">
+                      <td class="text-center" rowspan="4">Bencana</td>
+                      <td><input type="text" name="" value="REBAH"></td>
+                      <td><input type="text" name="rebah" value="0" onClick="this.select();"></td>
+                    </tr>
+                    <tr class="border">
+                      <td><input type="text" name="" value="KEMARAU"></td>
+                      <td><input type="text" name="kemarau" value="0" onClick="this.select();"></td>
+                    </tr>
+                    <tr class="border">
+                      <td><input type="text" name="" value="BANJIR"></td>
+                      <td><input type="text" name="banjir" value="0" onClick="this.select();"></td>
+                    </tr>
+                    <tr class="border">
+                      <td><input type="text" name="" value="LAIN"></td>
+                      <td><input type="text" name="bencanaLain" value="0" onClick="this.select();"></td>
+                    </tr>                    
+                    <tr class="border">
+                      <td class="text-center">Isu Lain</td>
+                      <td><textarea name="isulain" placeholder="Taip..."></textarea></td>
+                      <td><input type="text" name="isuLain" value="0" onClick="this.select();"></td>
+                    </tr>                        
+                  </table>             
                 </div>
                 
                 <div class="md:flex md:items-center">
