@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto md:px-12 lg:px-9">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white bg-blue-200 border-b border-gray-200 text-xl font-bold">
-                   Musim
+                   Hasil Carian Maklumat Banci
                 </div> 
             </div>            
         </div>
@@ -35,19 +35,19 @@
                             <tr><td colspan="9"><a href="{{ url()->previous() }}" class="text-blue-500"><< Kembali </a></td></tr>
                         @endif
 
-                        @isset($farmers)
-                            @foreach($farmers as $farmer)
-                                <tr>
-                                  <td class="text-center">{{ $loop->iteration }}</td>
-                                  <td class="text-blue-500"><a href="{{ route('maklumatBancian', $farmer->id) }}">{{ $farmer->nama }}</a></td>
-                                  <td>{{ $farmer->nokp }}</td>
-                                  <td class="text-center">{{ substr($farmer->jantina, 0, 1) }}</td>
-                                  <td>{{ $farmer->milikan->nama }}</td>
-                                  <td>{{ $farmer->notel }}</td>
-                                  <td>{{ $farmer->alamat }}</td>
-                                </tr>
-                            @endforeach
-                        @endisset
+                        
+                        @foreach($farmers as $farmer)
+                            <tr>
+                              <td class="text-center">{{ $loop->iteration }}</td>
+                              <td class="text-blue-500"><a href="{{ route('maklumatBancian', $farmer->id) }}">{{ ucwords($farmer->nama) }}</a></td>
+                              <td>{{ $farmer->nokp }}</td>
+                              <td class="text-center">{{ substr($farmer->jantina, 0, 1) }}</td>
+                              <td>{{ $farmer->milikan->nama }}</td>
+                              <td>{{ $farmer->notel }}</td>
+                              <td>{{ $farmer->alamat }}</td>
+                            </tr>
+                        @endforeach
+                        
                     </tbody>
                     </table>
                 </div>

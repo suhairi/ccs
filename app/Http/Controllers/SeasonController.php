@@ -18,6 +18,7 @@ use App\Models\Fertilizer;
 use App\Models\Fertilization;
 use App\Models\Issue;
 use App\Models\Hasil;
+use App\Models\Musim;
 
 
 class SeasonController extends Controller
@@ -73,8 +74,10 @@ class SeasonController extends Controller
         $region = Locality::where('id', $request->locality_id)->first();
         $request['region_id']   = $region->region_id;
 
+        $musim = Musim::where('status', 1)->first();
+        $request['musim_id'] = $musim->id;
+
         Session::put('phase', $request['phase']);
-        // Session::put('season_id', $request['season_id']);
         Session::put('locality_id', $request['locality_id']);   
 
         // Check wether the farmer's SEASON has been recorded.

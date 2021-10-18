@@ -67,7 +67,7 @@ Route::middleware('auth')->group(function () {
     Route::post('rujukan', [SeasonController::class, 'storeRujukan'])->name('storeRujukan');
 
     // ######################
-    //       Reports
+    //    Reports / Laporan
     // ######################
     Route::group(['namespace' => 'reports'], function() {
 

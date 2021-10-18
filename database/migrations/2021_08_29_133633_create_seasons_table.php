@@ -17,6 +17,7 @@ class CreateSeasonsTable extends Migration
             $table->id();
             $table->foreignId('farmer_id');
             $table->foreignId('region_id');
+            $table->foreignId('musim_id');
             $table->string('phase');
             $table->foreignId('locality_id');
             $table->integer('nolot');
