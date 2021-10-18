@@ -47,15 +47,6 @@ class DatabaseSeeder extends Seeder
         // Fertilizer
         $this->call([FertilizerSeeder::class]);
 
-        // Perosak
-        $this->call([PerosakSeeder::class]);
-
-        // Penyakit
-        $this->call([PenyakitSeeder::class]);
-
-        // Bencana
-        $this->call([BencanaSeeder::class]);
-
         // Settings - Musim
         $this->call([MusimSeeder::class]);
 

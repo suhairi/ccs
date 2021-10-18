@@ -16,10 +16,8 @@ use App\Models\Method;
 use App\Models\Crop;
 use App\Models\Fertilizer;
 use App\Models\Fertilization;
-use App\Models\Perosak;
-use App\Models\Penyakit;
-use App\Models\Bencana;
-use App\Models\Isulain;
+use App\Models\Issue;
+use App\Models\Hasil;
 
 
 class SeasonController extends Controller
@@ -299,18 +297,204 @@ class SeasonController extends Controller
 
         $farmer = Farmer::where('id', Session::get('farmer_id'))->first();
 
-        return view('forms.issues')
+        return view('forms.issues')->with('farmer', $farmer);
     }
 
     public function storeIssues(Request $request) {
 
-        dd($request->all());
+        // dd($request->all());
 
-        
+        // Perosak
 
+        if($request['tikus'] > 0) {
+            $issue              = new Issue;
+            $issue->season_id   = Session::get('season_id');
+            $issue->kategori    = 'Perosak';
+            $issue->nama        = 'Tikus';
+            $issue->peratus     = $request['tikus'];
+            $issue->save();
+        }
+
+        if($request['siputGondang'] > 0) {
+            $issue              = new Issue;
+            $issue->season_id   = Session::get('season_id');
+            $issue->kategori    = 'Perosak';
+            $issue->nama        = 'Siput Gondang Emas';
+            $issue->peratus     = $request['siputGondang'];
+            $issue->save();
+        }
+
+        if($request['kutuThrip'] > 0) {
+            $issue              = new Issue;
+            $issue->season_id   = Session::get('season_id');
+            $issue->kategori    = 'Perosak';
+            $issue->nama        = 'Kutu Thrip';
+            $issue->peratus     = $request['kutuThrip'];
+            $issue->save();
+        }
+
+        if($request['pengorekBatang'] > 0) {
+            $issue              = new Issue;
+            $issue->season_id   = Session::get('season_id');
+            $issue->kategori    = 'Perosak';
+            $issue->nama        = 'Ulat Pengorek Batang';
+            $issue->peratus     = $request['pengorekBatang'];
+            $issue->save();
+        }
+
+        if($request['gulungDaun'] > 0) {
+            $issue              = new Issue;
+            $issue->season_id   = Session::get('season_id');
+            $issue->kategori    = 'Perosak';
+            $issue->nama        = 'Ulat Gulung Daun';
+            $issue->peratus     = $request['gulungDaun'];
+            $issue->save();
+        }
+
+        if($request['ulatLayar'] > 0) {
+            $issue              = new Issue;
+            $issue->season_id   = Session::get('season_id');
+            $issue->kategori    = 'Perosak';
+            $issue->nama        = 'Ulat Layar';
+            $issue->peratus     = $request['ulatLayar'];
+            $issue->save();
+        }
+
+        if($request['benaPerang'] > 0) {
+            $issue              = new Issue;
+            $issue->season_id   = Session::get('season_id');
+            $issue->kategori    = 'Perosak';
+            $issue->nama        = 'Bena Perang';
+            $issue->peratus     = $request['benaPerang'];
+            $issue->save();
+        }
+
+        if($request['kesing'] > 0) {
+            $issue              = new Issue;
+            $issue->season_id   = Session::get('season_id');
+            $issue->kategori    = 'Perosak';
+            $issue->nama        = 'Kesing';
+            $issue->peratus     = $request['kesing'];
+            $issue->save();
+        }      
+
+        // Penyakit
+
+        if($request['karah'] > 0) {
+            $issue              = new Issue;
+            $issue->season_id   = Session::get('season_id');
+            $issue->kategori    = 'Penyakit';
+            $issue->nama        = 'Karah';
+            $issue->peratus     = $request['karah'];
+            $issue->save();
+        }
+
+        if($request['daunBakteria'] > 0) {
+            $issue              = new Issue;
+            $issue->season_id   = Session::get('season_id');
+            $issue->kategori    = 'Penyakit';
+            $issue->nama        = 'Hawar Daun Bakteria';
+            $issue->peratus     = $request['daunBakteria'];
+            $issue->save();
+        }
+
+        if($request['hawarSeludang'] > 0) {
+            $issue              = new Issue;
+            $issue->season_id   = Session::get('season_id');
+            $issue->kategori    = 'Penyakit';
+            $issue->nama        = 'Hawar Seludang';
+            $issue->peratus     = $request['hawarSeludang'];
+            $issue->save();
+        }
+
+        if($request['bintikPerang'] > 0) {
+            $issue              = new Issue;
+            $issue->season_id   = Session::get('season_id');
+            $issue->kategori    = 'Penyakit';
+            $issue->nama        = 'Bintik Perang';
+            $issue->peratus     = $request['Bintik Perang'];
+            $issue->save();
+        }
+
+        // Bencana
+
+        if($request['rebah'] > 0) {
+            $issue              = new Issue;
+            $issue->season_id   = Session::get('season_id');
+            $issue->kategori    = 'Bencana';
+            $issue->nama        = 'Rebah';
+            $issue->peratus     = $request['rebah'];
+            $issue->save();
+        }
+
+        if($request['kemarau'] > 0) {
+            $issue              = new Issue;
+            $issue->season_id   = Session::get('season_id');
+            $issue->kategori    = 'Bencana';
+            $issue->nama        = 'Kemarau';
+            $issue->peratus     = $request['kemarau'];
+            $issue->save();
+        }
+
+        if($request['banjir'] > 0) {
+            $issue              = new Issue;
+            $issue->season_id   = Session::get('season_id');
+            $issue->kategori    = 'Bencana';
+            $issue->nama        = 'Banjir';
+            $issue->peratus     = $request['banjir'];
+            $issue->save();
+        }
+
+        if($request['bencanaLain'] > 0) {
+            $issue              = new Issue;
+            $issue->season_id   = Session::get('season_id');
+            $issue->kategori    = 'Bencana';
+            $issue->nama        = 'Bencana Lain';
+            $issue->peratus     = $request['bencanaLain'];
+            $issue->save();
+        }
+
+        // Isu Lain
+
+        if($request['bencanaLain'] > 0) {
+            $issue              = new Issue;
+            $issue->season_id   = Session::get('season_id');
+            $issue->kategori    = 'Lain';
+            $issue->nama        = 'Isu Lain : ' . $request['isuLain'];
+            $issue->peratus     = $request['isuLain'];
+            $issue->save();
+        }
+       
         Session::flash('success', 'Berjaya.');
         return redirect()->route('rujukan');
 
+    }
+
+
+    public function rujukan() {
+
+        $farmer = Farmer::where('id', Session::get('farmer_id'))->first();
+
+        return view('forms.rujukan')->with('farmer', $farmer);
+    }
+
+    public function storeRujukan(Request $request) {
+
+        // dd($request->all());
+
+        $rujukan = $request->validate([
+                'rujukan'       => 'required',
+                'hasilLot'      => 'required|numeric',
+                'hasilKgHektar' => 'required|numeric'
+            ]);
+
+        $request['season_id'] = Session::get('season_id');
+
+        $rujukan = Hasil::create($request->all());
+
+        Session::flash('success', 'Berjaya');
+
+        return redirect()->route('musim');
     }
 
 

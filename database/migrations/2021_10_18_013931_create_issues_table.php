@@ -17,8 +17,8 @@ class CreateIssuesTable extends Migration
             $table->id();
             $table->foreignId('season_id');
             $table->string('kategori'); // Perosak, Penyakit, Bencana, Lain
-            $table->string('nama')
-            $table->float('peratus', 3, 2);
+            $table->string('nama');
+            $table->float('peratus', 9, 2)->nullable();
         });
     }
 

@@ -55,10 +55,10 @@
                   </div>
                   <input type="hidden" name="farmer_id" value="{{ Session::get('farmer_id') }}">
                   <table class="w-full tr-even:bg-grey-light">
-                    <tr class="border">
+                    <tr class="border bg-blue-100">
                       <td><strong>Serangan</strong></td>
                       <td align="center"><strong>Jenis Kerosakan</strong></td>
-                      <td><strong>% Kerosakan</strong></td>
+                      <td align="center"><strong>% Kerosakan</strong></td>
                     </tr>
                     <tr class="border">
                       <td class="text-center" rowspan="8">Serangan Perosak</td>
@@ -67,7 +67,7 @@
                     </tr>
                     <tr class="border">
                       <td><input type="text" name="" value="SIPUT GONDANG" readonly=""></td>
-                      <td><input type="text" name="siputgondang" value="0" onClick="this.select();"></td>
+                      <td><input type="text" name="siputGondang" value="0" onClick="this.select();"></td>
                     </tr>
                     <tr class="border">
                       <td><input type="text" name="" value="KUTU THRIP" readonly=""></td>
