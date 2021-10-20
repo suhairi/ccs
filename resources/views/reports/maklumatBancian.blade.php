@@ -33,7 +33,7 @@
                 <div class="max-w-7xl mx-auto md:px-12 lg:px-9">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-3 bg-white border-b border-gray-200 text-sm font-bold">
-                        <table class="w-full tr-even:bg-grey-light"></div>
+                        <table class="w-full tr-even:bg-grey-light">
                             <thead>
                                 <tr class="bg-gray-300">
                                     <th colspan="3">Maklumat Asas Pesawah</th>
@@ -149,9 +149,57 @@
                               <td>Tarikh Tuai Sebenar</td>
                               <td>:</td>
                               <td>{{ $crop->tarikhTuaiSebenar }}</td>
-                            </tr>                           
-                            
+                            </tr>
                         </table>
+                      </div>
+                      <div class="p-3 bg-white border-b border-gray-200 text-sm font-bold">
+                        <table class="w-full tr-even:bg-grey-light">
+                          <thead>
+                              <tr class="bg-gray-300">
+                                  <th colspan="6">Kadar Pembajaan</th>
+                              </tr>                            
+                          </thead>
+                          <tr class="bg-gray-200">
+                            <td>Jenis</td>
+                            <td>Kekerapan</td>
+                            <td>Tarikh</td>
+                            <td>HLT</td>
+                            <td>Kg/Relung</td>
+                            <td>Kg/Hektar</td>
+                          </tr>
+                          @foreach($fertilizations as $fertilization)
+                            <tr>
+                              <td>{{ $fertilization->fertilizer->nama }}</td>
+                              <td>{{ $fertilization->kekerapan }}</td>
+                              <td>{{ $fertilization->tarikh }}</td>
+                              <td>{{ $fertilization->hlt }}</td>
+                              <td>{{ $fertilization->kgPerRelung }}</td>
+                              <td>{{ $fertilization->kgPerHektar }}</td>
+                            </tr>
+                          @endforeach
+                        </table>
+                      </div>
+                      <div class="p-3 bg-white border-b border-gray-200 text-sm font-bold">
+                        <table class="w-full tr-even:bg-grey-light">
+                          <thead>
+                              <tr class="bg-gray-300">
+                                  <th colspan="3">Isu Tanaman</th>
+                              </tr>                            
+                          </thead>
+                          <tr class="bg-gray-200">
+                            <td>Isu</td>
+                            <td>Jenis Kerosakan</td>
+                            <td>Peratus Kerosakan</td>
+                          </tr>
+                          @foreach($issues as $issue)
+                            <tr>
+                              <td>{{ $issue->kategori }}</td>
+                              <td>{{ $issue->nama }}</td>
+                              <td>{{ $issue->peratus }}</td>
+                            </tr>
+                          @endforeach
+                        </table>
+                      </div>
                             
                         
 

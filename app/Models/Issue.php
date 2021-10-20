@@ -9,8 +9,10 @@ class Issue extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'id';
+
     public $timestamps  = false;
-    public $fillable    = ['season_id', 'kategori', 'nama', 'peratus'];
+    protected $fillable    = ['season_id', 'kategori', 'nama', 'peratus'];
 
 
     public function season() {

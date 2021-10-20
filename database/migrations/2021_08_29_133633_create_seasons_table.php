@@ -19,6 +19,7 @@ class CreateSeasonsTable extends Migration
             $table->foreignId('region_id');
             $table->foreignId('musim_id');
             $table->string('phase');
+            $table->integer('tahun');
             $table->foreignId('locality_id');
             $table->integer('nolot');
             $table->float('luaslot', 9, 2);

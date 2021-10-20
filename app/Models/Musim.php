@@ -9,6 +9,8 @@ class Musim extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'id';
+
     public $timestamps  = false;
-    public $fillable    = ['musim', 'tahun', 'status'];
+    protected $fillable    = ['musim', 'tahun', 'status'];
 }

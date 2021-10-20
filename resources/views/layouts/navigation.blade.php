@@ -75,9 +75,9 @@
 
                         <x-slot name="content">
                             <x-dropdown-link :href="route('bancian')">Maklumat Banci Pesawah</x-dropdown-link>
-                            <x-dropdown-link :href="route('dashboard')">Laporan Hasil</x-dropdown-link>
-                            <x-dropdown-link :href="route('dashboard')">Laporan Hakmilik</x-dropdown-link>
-                            <x-dropdown-link :href="route('dashboard')">Laporan Kaedah Tanam</x-dropdown-link>
+                            <x-dropdown-link :href="route('varieti')">Laporan Varieti</x-dropdown-link>
+                            <x-dropdown-link :href="route('dashboard')">Laporan Hakmilik...</x-dropdown-link>
+                            <x-dropdown-link :href="route('dashboard')">Laporan Kaedah Tanam...</x-dropdown-link>
                         </x-slot>
                     </x-dropdown>
                 </div>

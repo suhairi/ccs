@@ -129,8 +129,8 @@
                     </tr>                    
                     <tr class="border">
                       <td class="text-center">Isu Lain</td>
-                      <td><textarea name="isulain" placeholder="Taip..."></textarea></td>
-                      <td><input type="text" name="isuLain" value="0" onClick="this.select();"></td>
+                      <td><textarea name="isuLain" placeholder="Taip..."></textarea></td>
+                      <td><input type="text" name="peratusIsuLain" value="0" onClick="this.select();"></td>
                     </tr>                        
                   </table>             
                 </div>

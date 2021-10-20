@@ -71,9 +71,13 @@ Route::middleware('auth')->group(function () {
     // ######################
     Route::group(['namespace' => 'reports'], function() {
 
+        // Bancian
         Route::get('/bancian', [ReportController::class, 'bancian'])->name('bancian');
         Route::post('/bancian', [ReportController::class, 'carianBancian'])->name('carianBancian');
         Route::get('/bancian/{id}', [ReportController::class, 'maklumatBancian'])->name('maklumatBancian');
+
+        //Variety
+        Route::get('/varieti', [ReportController::class, 'variety'])->name('varieti');
 
 
     });

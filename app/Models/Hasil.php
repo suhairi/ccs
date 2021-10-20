@@ -9,6 +9,8 @@ class Hasil extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'id';
+
     public $timestamps  = false;
     public $fillable    = ['season_id', 'rujukan', 'hasilLot', 'hasilKgHektar'];
 

@@ -75,7 +75,9 @@ class SeasonController extends Controller
         $request['region_id']   = $region->region_id;
 
         $musim = Musim::where('status', 1)->first();
+        // dd($musim->tahun);
         $request['musim_id'] = $musim->id;
+        $request['tahun'] = $musim->tahun;
 
         Session::put('phase', $request['phase']);
         Session::put('locality_id', $request['locality_id']);   
@@ -415,7 +417,7 @@ class SeasonController extends Controller
             $issue->season_id   = Session::get('season_id');
             $issue->kategori    = 'Penyakit';
             $issue->nama        = 'Bintik Perang';
-            $issue->peratus     = $request['Bintik Perang'];
+            $issue->peratus     = $request['bintikPerang'];
             $issue->save();
         }
 
@@ -457,14 +459,14 @@ class SeasonController extends Controller
             $issue->save();
         }
 
-        // Isu Lain
+        // // Isu Lain
 
-        if($request['bencanaLain'] > 0) {
+        if($request['peratusIsuLain'] > 0) {
             $issue              = new Issue;
             $issue->season_id   = Session::get('season_id');
             $issue->kategori    = 'Lain';
-            $issue->nama        = 'Isu Lain : ' . $request['isuLain'];
-            $issue->peratus     = $request['isuLain'];
+            $issue->nama        = $request['isuLain'];
+            $issue->peratus     = $request['peratusIsuLain'];
             $issue->save();
         }
        

@@ -9,6 +9,8 @@ class Fertilization extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'id';
+
     public $timestamps = false;
 
     public $fillable = ['season_id', 'fertilizer_id', 'kekerapan', 'tarikh', 'hlt', 'kgPerRelung', 'kgPerHektar'];

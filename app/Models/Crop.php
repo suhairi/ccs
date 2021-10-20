@@ -9,25 +9,25 @@ class Crop extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
-
     protected $primaryKey   = 'id';
+
+    public $timestamps = false;
     protected $fillable     = ['farmer_id', 'season_id', 'variety_id', 'method_id', 'tarikhTanam', 'tarikhJangkaTuai', 'tarikhTuaiSebenar'];
 
     public function pesawah() {
-        return $this->belongsTo('Farmer::class');
+        return $this->belongsTo(Farmer::class);
     }
 
     public function season() {
-        return $this->belongsTo('Season::class');
+        return $this->belongsTo(Season::class);
     }
 
     public function variety() {
-        return $this->belongsTo('Variety::class');
+        return $this->belongsTo(Variety::class);
     }
 
     public function method() {
-        return $this->belongsTo('Method::class');
+        return $this->belongsTo(Method::class);
     }
 
     

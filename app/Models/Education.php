@@ -9,11 +9,11 @@ class Education extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
+    protected $primaryKey   = 'id';
 
     protected $table        = 'educations';
 
-    protected $primaryKey   = 'id';
+    public $timestamps = false;
     protected $fillable     = ['nama'];
     
 }

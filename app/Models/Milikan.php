@@ -9,6 +9,8 @@ class Milikan extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'id';
+
     public $timestamps  = false;
-    public $fillable    = ['nama'];
+    protected $fillable    = ['nama'];
 }
