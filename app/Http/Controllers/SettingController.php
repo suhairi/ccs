@@ -148,6 +148,11 @@ class SettingController extends Controller
         }
     }
 
+    public function tailwind() {
+
+        return view('settings.tailwind');
+    }
+
     
 
 

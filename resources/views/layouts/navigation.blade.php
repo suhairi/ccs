@@ -107,7 +107,7 @@
                                 <x-dropdown-link :href="route('settings.users')">Users</x-dropdown-link>
                                 <x-dropdown-link :href="route('settings.educations')">Educations</x-dropdown-link>
                                 <x-dropdown-link :href="route('settings.localitites')">Localitites</x-dropdown-link>
-                                <x-dropdown-link :href="route('dashboard')">Region..</x-dropdown-link>
+                                <x-dropdown-link :href="route('tailwind')">Test Tailwind.css</x-dropdown-link>
                             </x-slot>
                         </x-dropdown>
                     </div>

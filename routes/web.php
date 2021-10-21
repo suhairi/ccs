@@ -102,6 +102,8 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/localitites', [SettingController::class, 'locality'])->name('settings.localitites');
 
+        Route::get('/tailwind', [SettingController::class, 'tailwind'])->name('tailwind');
+
         
     });
 
