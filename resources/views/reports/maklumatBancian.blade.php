@@ -42,7 +42,7 @@
                         <tr>
                           <td>Nama</td>
                           <td>:</td>
-                          <td>{{ ucwords($season->farmer->nama) }}</td>
+                          <td>{{ ucwords(strtolower($season->farmer->nama)) }}</td>
                         </tr>
                         <tr>
                           <td>No KP</td>
@@ -67,7 +67,7 @@
                         <tr>
                           <td>Alamat Rumah</td>
                           <td>:</td>
-                          <td>{{ $season->farmer->alamat }}</td>
+                          <td>{{ ucwords(strtolower($season->farmer->alamat)) }}</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>

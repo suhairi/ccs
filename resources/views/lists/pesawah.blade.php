@@ -34,15 +34,15 @@
                     <tbody>
                       @foreach($farmers as $farmer)
                         <tr>
-                          <td class="text-center">{{ $loop->iteration }}</td>
-                          <td>{{ $farmer->nama }}</td>
-                          <td>{{ $farmer->nokp }}</td>
-                          <td class="text-center">{{ substr($farmer->jantina, 0, 1) }}</td>
-                          <td class="text-center">{{ $farmer->umur }}</td>
-                          <td>{{ $farmer->education->nama }}</td>
-                          <td>{{ $farmer->milikan->nama }}</td>
-                          <td>{{ $farmer->notel }}</td>
-                          <td>{{ $farmer->alamat }}</td>
+                          <td class="text-center" valign="top">{{ $loop->iteration }}</td>
+                          <td valign="top">{{ ucwords(strtolower($farmer->nama)) }}</td>
+                          <td valign="top">{{ $farmer->nokp }}</td>
+                          <td class="text-center" valign="top">{{ substr($farmer->jantina, 0, 1) }}</td>
+                          <td class="text-center" valign="top">{{ $farmer->umur }}</td>
+                          <td valign="top">{{ $farmer->education->nama }}</td>
+                          <td valign="top">{{ $farmer->milikan->nama }}</td>
+                          <td valign="top">{{ $farmer->notel }}</td>
+                          <td valign="top">{{ ucwords(strtolower($farmer->alamat)) }}</td>
                           <td>[ <a href="{{ route('pesawah.update.form', $farmer->id) }}" class="text-blue-500">Modify</a> ] [ <a href="#" class="text-blue-500">Delete</a> ]</td>
                         </tr>
                       @endforeach

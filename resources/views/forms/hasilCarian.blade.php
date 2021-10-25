@@ -23,7 +23,6 @@
                             <th class="text-left">Nama</th>
                             <th class="text-left">No KP</th>
                             <th class="text-left">Jantina</th>
-                            <th class="text-left">Pendidikan</th>
                             <th class="text-left">Milikan</th>
                             <th class="text-left">No Tel</th>
                             <th class="text-left">Alamat</th>

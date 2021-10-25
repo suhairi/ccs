@@ -186,110 +186,151 @@ class SeasonController extends Controller
 
         // dd($request->all());
 
+        // Check if season_id already existed
+
+        $fertilization  = Fertilization::where('season_id', $request['season_id'])->get();
+
+        if(!empty($fertilization)) {
+
+            Session::flash('success', 'Berjaya.');
+            return redirect()->route('issues');
+        }
+
+
+        // dd($fertilization);
+
         // Store SEBATIAN -> Fertilizer_id = 1
-        $sebatian = new Fertilization;
 
-        $sebatian->fertilizer_id    = 1;
-        $sebatian->season_id        = $request['season_id'];
-        $sebatian->kekerapan        = 1;
-        $sebatian->tarikh           = $request['sebatian1Date'];
-        $hlt                        = Carbon::createFromFormat('Y-m-d', $request['sebatian1Date']);
-        $hlt                        = $hlt->addDays(110);
-        $sebatian->hlt              = $hlt->format('Y-m-d');
-        $sebatian->kgPerRelung      = $request['sebatian1'];
-        $sebatian->kgPerHektar      = $request['sebatian1'] / 3.475;
-        $sebatian->save();
+        if($request['sebatian1Date'] != null) {
 
-        $sebatian = new Fertilization;
-        $sebatian->fertilizer_id    = 1;
-        $sebatian->season_id        = $request['season_id'];
-        $sebatian->kekerapan        = 2;
-        $sebatian->tarikh           = $request['sebatian2Date'];
-        $hlt                        = Carbon::createFromFormat('Y-m-d', $request['sebatian2Date']);
-        $hlt                        = $hlt->addDays(110);
-        $sebatian->hlt              = $hlt->format('Y-m-d');
-        $sebatian->kgPerRelung      = $request['sebatian2'];
-        $sebatian->kgPerHektar      = $request['sebatian2'] / 3.475;
-        $sebatian->save();
+            $sebatian = new Fertilization;
+
+            $sebatian->fertilizer_id    = 1;
+            $sebatian->season_id        = $request['season_id'];
+            $sebatian->kekerapan        = 1;
+            $sebatian->tarikh           = $request['sebatian1Date'];
+            $hlt                        = Carbon::createFromFormat('Y-m-d', $request['sebatian1Date']);
+            $hlt                        = $hlt->addDays(110);
+            $sebatian->hlt              = $hlt->format('Y-m-d');
+            $sebatian->kgPerRelung      = $request['sebatian1'];
+            $sebatian->kgPerHektar      = $request['sebatian1'] / 3.475;
+            $sebatian->save();
+
+            if($request['sebatian2Date'] != null) {
+
+                $sebatian = new Fertilization;
+                $sebatian->fertilizer_id    = 1;
+                $sebatian->season_id        = $request['season_id'];
+                $sebatian->kekerapan        = 2;
+                $sebatian->tarikh           = $request['sebatian2Date'];
+                $hlt                        = Carbon::createFromFormat('Y-m-d', $request['sebatian2Date']);
+                $hlt                        = $hlt->addDays(110);
+                $sebatian->hlt              = $hlt->format('Y-m-d');
+                $sebatian->kgPerRelung      = $request['sebatian2'];
+                $sebatian->kgPerHektar      = $request['sebatian2'] / 3.475;
+                $sebatian->save();
+            }
+        }
 
         // Store UREA -> Fertilizer_id = 2
-        $urea = new Fertilization;
 
-        $urea->fertilizer_id    = 2;
-        $urea->season_id        = $request['season_id'];
-        $urea->kekerapan        = 1;
-        $urea->tarikh           = $request['urea1Date'];
-        $hlt                    = Carbon::createFromFormat('Y-m-d', $request['urea1Date']);
-        $hlt                    = $hlt->addDays(110);
-        $urea->hlt              = $hlt->format('Y-m-d');
-        $urea->kgPerRelung      = $request['urea1'];
-        $urea->kgPerHektar      = $request['urea1'] / 3.475;
-        $urea->save();
+        if($request['urea1Date'] != null) {
+            $urea = new Fertilization;
 
-        $urea = new Fertilization;
-        $urea->fertilizer_id    = 2;
-        $urea->season_id        = $request['season_id'];
-        $urea->kekerapan        = 2;
-        $urea->tarikh           = $request['urea2Date'];
-        $hlt                    = Carbon::createFromFormat('Y-m-d', $request['urea2Date']);
-        $hlt                    = $hlt->addDays(110);
-        $urea->hlt              = $hlt->format('Y-m-d');
-        $urea->kgPerRelung      = $request['urea2'];
-        $urea->kgPerHektar      = $request['urea2'] / 3.475;
-        $urea->save();
+            $urea->fertilizer_id    = 2;
+            $urea->season_id        = $request['season_id'];
+            $urea->kekerapan        = 1;
+            $urea->tarikh           = $request['urea1Date'];
+            $hlt                    = Carbon::createFromFormat('Y-m-d', $request['urea1Date']);
+            $hlt                    = $hlt->addDays(110);
+            $urea->hlt              = $hlt->format('Y-m-d');
+            $urea->kgPerRelung      = $request['urea1'];
+            $urea->kgPerHektar      = $request['urea1'] / 3.475;
+            $urea->save();
+
+            if($request['urea2Date'] != null) {
+
+                $urea = new Fertilization;
+                $urea->fertilizer_id    = 2;
+                $urea->season_id        = $request['season_id'];
+                $urea->kekerapan        = 2;
+                $urea->tarikh           = $request['urea2Date'];
+                $hlt                    = Carbon::createFromFormat('Y-m-d', $request['urea2Date']);
+                $hlt                    = $hlt->addDays(110);
+                $urea->hlt              = $hlt->format('Y-m-d');
+                $urea->kgPerRelung      = $request['urea2'];
+                $urea->kgPerHektar      = $request['urea2'] / 3.475;
+                $urea->save();
+            }
+        }
 
         // Store SEBATIAN TAMBAHAN -> Fertilizer_id = 3
-        $tambahan = new Fertilization;
 
-        $tambahan->fertilizer_id    = 3;
-        $tambahan->season_id        = $request['season_id'];
-        $tambahan->kekerapan        = 1;
-        $tambahan->tarikh           = $request['tambahan1Date'];
-        $hlt                        = Carbon::createFromFormat('Y-m-d', $request['tambahan2Date']);
-        $hlt                        = $hlt->addDays(110);
-        $tambahan->hlt              = $hlt->format('Y-m-d');
-        $tambahan->kgPerRelung      = $request['tambahan1'];
-        $tambahan->kgPerHektar      = $request['tambahan1'] / 3.475;
-        $tambahan->save();
+        if($request['tambahan1Date'] != null) {
+            $tambahan = new Fertilization;
 
-        $tambahan = new Fertilization;
-        $tambahan->fertilizer_id    = 3;
-        $tambahan->season_id        = $request['season_id'];
-        $tambahan->kekerapan        = 2;
-        $tambahan->tarikh           = $request['tambahan2Date'];
-        $hlt                        = Carbon::createFromFormat('Y-m-d', $request['tambahan2Date']);
-        $hlt                        = $hlt->addDays(110);
-        $tambahan->hlt              = $hlt->format('Y-m-d');
-        $tambahan->kgPerRelung      = $request['tambahan2'];
-        $tambahan->kgPerHektar      = $request['tambahan2'] / 3.475;
-        $tambahan->save();
+            $tambahan->fertilizer_id    = 3;
+            $tambahan->season_id        = $request['season_id'];
+            $tambahan->kekerapan        = 1;
+            $tambahan->tarikh           = $request['tambahan1Date'];
+            $hlt                        = Carbon::createFromFormat('Y-m-d', $request['tambahan2Date']);
+            $hlt                        = $hlt->addDays(110);
+            $tambahan->hlt              = $hlt->format('Y-m-d');
+            $tambahan->kgPerRelung      = $request['tambahan1'];
+            $tambahan->kgPerHektar      = $request['tambahan1'] / 3.475;
+            $tambahan->save();
+
+            if($request['tambahan2Date'] != null) {
+
+                $tambahan = new Fertilization;
+                $tambahan->fertilizer_id    = 3;
+                $tambahan->season_id        = $request['season_id'];
+                $tambahan->kekerapan        = 2;
+                $tambahan->tarikh           = $request['tambahan2Date'];
+                $hlt                        = Carbon::createFromFormat('Y-m-d', $request['tambahan2Date']);
+                $hlt                        = $hlt->addDays(110);
+                $tambahan->hlt              = $hlt->format('Y-m-d');
+                $tambahan->kgPerRelung      = $request['tambahan2'];
+                $tambahan->kgPerHektar      = $request['tambahan2'] / 3.475;
+                $tambahan->save();
+            }
+        }
 
         // Store BAJA LAIN -> Fertilizer_id = 4
-        $lain = new Fertilization;
 
-        $lain->fertilizer_id    = 4;
-        $lain->season_id        = $request['season_id'];
-        $lain->kekerapan        = 1;
-        $lain->tarikh           = $request['lain1Date'];
-        $hlt                    = Carbon::createFromFormat('Y-m-d', $request['lain1Date']);
-        $hlt                    = $hlt->addDays(110);
-        $lain->hlt              = $hlt->format('Y-m-d');
-        $lain->kgPerRelung      = $request['lain1'];
-        $lain->kgPerHektar      = $request['lain1'] / 3.475;
-        $lain->save();
+        if($request['lain1Date'] != null) {
 
-        $lain = new Fertilization;
-        $lain->fertilizer_id    = 4;
-        $lain->season_id        = $request['season_id'];
-        $lain->kekerapan        = 2;
-        $lain->tarikh           = $request['lain2Date'];
-        $hlt                    = Carbon::createFromFormat('Y-m-d', $request['lain2Date']);
-        $hlt                    = $hlt->addDays(110);
-        $lain->hlt              = $hlt->format('Y-m-d');
-        $lain->kgPerRelung      = $request['lain2'];
-        $lain->kgPerHektar      = $request['lain2'] / 3.475;
-        $lain->save();
+            $lain = new Fertilization;
 
+            dd($request->all());
+
+            $lain->fertilizer_id    = 4;
+            $lain->season_id        = $request['season_id'];
+            $lain->kekerapan        = 1;
+            $lain->tarikh           = $request['lain1Date'];
+            $hlt                    = Carbon::createFromFormat('Y-m-d', $request['lain1Date']);
+            $hlt                    = $hlt->addDays(110);
+            $lain->hlt              = $hlt->format('Y-m-d');
+            $lain->kgPerRelung      = $request['lain1'];
+            $lain->kgPerHektar      = $request['lain1'] / 3.475;
+            $lain->save();
+
+            if($request['lain2Date'] != null) {
+
+                $lain = new Fertilization;
+                $lain->fertilizer_id    = 4;
+                $lain->season_id        = $request['season_id'];
+                $lain->kekerapan        = 2;
+                $lain->tarikh           = $request['lain2Date'];
+                $hlt                    = Carbon::createFromFormat('Y-m-d', $request['lain2Date']);
+                $hlt                    = $hlt->addDays(110);
+                $lain->hlt              = $hlt->format('Y-m-d');
+                $lain->kgPerRelung      = $request['lain2'];
+                $lain->kgPerHektar      = $request['lain2'] / 3.475;
+                $lain->save();
+            }
+        }
+        
         
         Session::flash('success', 'Berjaya.');
         return redirect()->route('issues');        

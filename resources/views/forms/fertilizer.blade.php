@@ -58,7 +58,7 @@
                     <tr class="border">
                           <td><strong>Jenis baja</strong></td>
                           <td><strong>Kekerapan</strong></td>
-                          <td><strong>Tarikh</strong></td>
+                          <td align="center"><strong>Tarikh</strong></td>
                           <td><strong>KG/Relung</strong></td>
                         </tr>
                         <tr class="border">

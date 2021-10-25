@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 
+use Carbon\Carbon;
+
 use App\Models\Farmer;
 use App\Models\Education;
 use App\Models\Milikan;
@@ -43,7 +45,7 @@ class FarmerController extends Controller
         $request['jantina']    = $this->getJantina(substr($request['nokp'], -1));
         $request['umur']       = $this->getUmur($request['nokp']);
 
-        // dd($request->all());
+        // dd($request['umur']);
 
         // Housekeeping
         $request['nama'] = ucwords($request->nama);
@@ -70,7 +72,23 @@ class FarmerController extends Controller
 
     protected function getUmur($nokp) {
 
-        return 12;
+        $tarikh     = substr($nokp, 0, 6);
+        $tarikh1    = substr($tarikh, 0, 2);
+        $tarikh2    = substr($tarikh, 2, 2);
+        $tarikh3    = substr($tarikh, 4, 2);
+
+        $year       = date('Y');
+        $year       = substr($year, 2, 2);
+
+        if($tarikh1 > $year)
+            $tarikh1 = '19' . $tarikh1;
+        else
+            $tarikh1 = '20' . $tarikh1;
+
+        $tarikh     = $tarikh1 . '-' . $tarikh2 . '-' . $tarikh3;
+        $age     = Carbon::createFromFormat('Y-m-d', $tarikh)->age;
+        
+        return $age;
     }
 
     public function pesawah(Request $request) {
@@ -91,7 +109,7 @@ class FarmerController extends Controller
 
         // dd($request->all());
 
-        $farmer = Farmer::findOrFail($request['farmer_id']);
+        $farmer                 = Farmer::findOrFail($request['farmer_id']);
         $farmer->nokp           = $request['nokp'];
         $farmer->education_id   = $request['education_id'];
         $farmer->milikan_id     = $request['milikan_id'];
